@@ -8,6 +8,10 @@ class User {
 };
 
 
+
+
+
+
 //#2 Class: Question generator
 class QuestionGen {
     constructor(category, question, wrong1, wrong2, correct) {
@@ -18,6 +22,13 @@ class QuestionGen {
         this.correct = correct;
     }
 };
+
+
+
+
+
+
+
 
 //#3 Class: Quiz generator
 class QuizGen {

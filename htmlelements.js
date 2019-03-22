@@ -6,5 +6,4 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 
 const progress = document.getElementById("progress");
-
 const scoreContainer = document.getElementById("scoreContainer");

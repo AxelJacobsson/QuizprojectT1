@@ -25,5 +25,4 @@ const question22 = new QuestionGen('Classes', 'What is an array?', 'xxx', 'zzz',
 const question23 = new QuestionGen('Classes', 'What is an array?', 'xxx', 'zzz', 'correct');
 const question24 = new QuestionGen('Classes', 'What is an array?', 'xxx', 'zzz', 'correct');
 
-
 //Generating a quiz
