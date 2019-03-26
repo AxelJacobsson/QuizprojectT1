@@ -1,7 +1,7 @@
 //Generating a question
 
-const question1 = new QuestionGen('Conditionals', 'What is a function?', 'xxx', 'zzz', 'correct');
-const question2 = new QuestionGen('Conditionals', 'What is an array?', 'xxx', 'zzz', 'correct');
+const question1 = new QuestionGen('Conditionals', 'What is a function?', 'yyy', 'zzz', 'correct');
+const question2 = new QuestionGen('Conditionals', 'What is an array?', 'uzus', 'zzz', 'correct');
 const question3 = new QuestionGen('Conditionals', 'What is an array?', 'xxx', 'zzz', 'correct');
 const question4 = new QuestionGen('Functions', 'What is an array?', 'xxx', 'zzz', 'correct');
 const question5 = new QuestionGen('Functions', 'What is an array?', 'xxx', 'zzz', 'correct');
@@ -49,30 +49,25 @@ function updateQuestion() {
     correct.innerHTML = allQuestions[questionNumber].correct;
 }
 
-//Call function 
-updateQuestion();
 
+//When "nextQuestion" button is clicked increment question number
 
-//Increment question number when "nextQuestion" button is clicked
-nextQuestion.onclick = function(){
+var nextQuestion = document.getElementById('nextQuestion')
+
+nextQuestion.onclick = function (){
     this.questionNumber++;
+    //Call function 
+    updateQuestion();
 };
-
-
-
 
 
 //Score variable
 
 let score = 0;
 
-//Keep track of the score
-alert("you got" + score + "/" + question.length);
-
-
 //Function for the multiple choice buttons
 //Loop array & alert if the answers are correct or not
-let checkAnswer = document.getElementsByClassName('btn-group');
+let checkAnswer = document.getElementsByClassName('nextQuestion');
 
 checkAnswer.onclick = function () {
     for(var i=0; i < allQuestions.length; i ++){
@@ -86,6 +81,9 @@ checkAnswer.onclick = function () {
     }
 
 }
+
+//Keep track of the score
+alert("you got" + score + "/" + question.length);
 
 
 

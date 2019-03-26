@@ -20,3 +20,14 @@ questionsCat1[0].question
 
 
 
+ASK:
+
+-First question displayed
+
+TO DO LIST:
+
+-Randomise choices
+-Score count
+
+
+-Generate quiz
