@@ -136,7 +136,7 @@ p {
   margin: 10% auto 5% auto;
 }
 
-.option-buttons button {
+.option-buttons {
   width: 600px;
   height: 70px;
   text-align: center;
@@ -149,7 +149,7 @@ p {
   display:block /* Make the buttons appear below each other */
 }
 
-.option-buttons button:hover {
+.option-buttons:hover {
   background-color: rgb(240, 240, 240);
 }
 

@@ -7,7 +7,6 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         <!-- Link to JavaScript files -->
         <script src="classes.js" type="text/javascript"></script>
-        <script src="javascript_quiz.js" type="text/javascript"></script>
         
     </head>
 
@@ -16,21 +15,29 @@
         <div><p id="question"></p></div>
 
         <!-- Quiz option buttons -->
-        <div class="option-buttons">
-            <button id="option1"><span id="choice0"></span></button>
-            <button id="option2"><span id="choice0"></span></button>
-            <button id="option3"><span id="choice0"></span></button>
+        <div>
+            <button class='option-buttons' id="option1"><span id="choice0"></span></button>
+            <button class='option-buttons' id="option2"><span id="choice0"></span></button>
+            <button class='option-buttons' id="option3"><span id="choice0"></span></button>
         </div>
 
         <!-- Feedback to user (Correct / Incorrect) -->
-        <div id="feedback">Correct</div>
+        <div id="feedback"></div>
 
         <!-- Next question -->
         <div>
-            <button class="red-dot">Next</button>
+            <button id="nextQuestion" class="red-dot">Next</button>
         </div>
 
-        <!-- WHY DOES IT HAVE TO BE HERE?? -->
+        <!-- Score -->
+        <div>
+            <p id="Highscore" ></p>
+        </div>
+
+        <!-- Link to Javascript -->
         <script src="generators.js" type="text/javascript"></script>
     </body>
 </html>
+
+
+<!-- Set disable property to true when selected the option -->

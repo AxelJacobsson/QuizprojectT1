@@ -14,6 +14,7 @@ var question = document.getElementById('question');
 var option1 = document.getElementById('option1');
 var option2 = document.getElementById('option2');
 var option3 = document.getElementById('option3');
+var feedback = document.getElementById('feedback');
 
 
 //Incrementing the question number when pressing "Next Question" button
@@ -31,7 +32,7 @@ function updateQuestion() {
 
 //When "nextQuestion" button is clicked increment question number
 
-var nextQuestion = document.getElementById('nextQuestion')
+var nextQuestion = document.getElementById('nextQuestion');
 
 nextQuestion.onclick = function (){
     questionNumber++;
@@ -41,41 +42,30 @@ nextQuestion.onclick = function (){
 };
 
 
+//Score variable
+let score = 0;
+
+//Loop the array of questions & display if the answers are correct or not
+
+let checkAnswer = document.getElementsByClassName('option-buttons');
+console.log(checkAnswer)
+for (const element of checkAnswer){
+    element.onclick = function (event) {
+        console.log(event.target);
+            var response = event.target.innerHTML; //Response should equal the choices
+            if(response == allQuestions[questionNumber].answer){
+                score++;
+                Highscore.innerHTML = "Highscore: " + score;
+                feedback.innerHTML = "Correct!";
+            } else {
+                feedback.innerHTML = "Incorrect!";
+            }
+        
+    
+    };
+}
+
+ 
 
 //When a quiz is started, in a function: a sort method that returns a new array, which is limited to 10 questions
 //The function should reshuffle the questions and your answers
-
-
-
-
-//Score variable
-
-let score = 0;
-
-//Function for the multiple choice buttons
-//Loop array & alert if the answers are correct or not
-
-/*
-let checkAnswer = document.getElementsByClassName('nextQuestion');
-
-checkAnswer.onclick = function () {
-    for(var i=0; i < allQuestions.length; i ++){
-        var response = window.prompt(allQuestions[i.prompt]);
-        if(response == allQuestions[i].correct){
-            score++;
-            alert("Correct!");
-        } else {
-            alert("Wrong!")
-        }
-    }
-
-}
-
-//Keep track of the score
-alert("you got" + score + "/" + question.length);
-
-*/
-
-//Generating a quiz
-
- 
