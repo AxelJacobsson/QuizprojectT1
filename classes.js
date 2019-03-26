@@ -3,37 +3,27 @@
 //#1 Class: User 
 class User {
     constructor(name) {
-        this.name = name;
+        this._name = name;
+    }
+
+    set name(value) {
+        this._name = value;
     }
 };
-
-
-
-
-
 
 //#2 Class: Question generator
 class QuestionGen {
-    constructor(category, question, wrong1, wrong2, correct) {
+    constructor(category, question, options, answer) {
         this.category = category;
         this.question = question;
-        this.wrong1 = wrong1;
-        this.wrong2 = wrong2;
-        this.correct = correct;
+        this.options = options;
+        this.answer = answer;
     }
 };
-
-
-
-
-
-
-
 
 //#3 Class: Quiz generator
 class QuizGen {
     constructor() {
-        this
+        
     }
 };
-

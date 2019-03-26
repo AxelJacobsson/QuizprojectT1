@@ -22,7 +22,7 @@ questionsCat1[0].question
 
 ASK:
 
--First question displayed
+-How to loop the score count?
 
 TO DO LIST:
 

@@ -1,29 +1,9 @@
 //Generating a question
 
-const question1 = new QuestionGen('Conditionals', 'What is a function?', 'yyy', 'zzz', 'correct');
-const question2 = new QuestionGen('Conditionals', 'What is an array?', 'uzus', 'zzz', 'correct');
-const question3 = new QuestionGen('Conditionals', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question4 = new QuestionGen('Functions', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question5 = new QuestionGen('Functions', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question6 = new QuestionGen('Functions', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question7 = new QuestionGen('Scope', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question8 = new QuestionGen('Scope', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question9 = new QuestionGen('Scope', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question10 = new QuestionGen('Arrays', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question11 = new QuestionGen('Arrays', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question12 = new QuestionGen('Arrays', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question13 = new QuestionGen('Loops', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question14 = new QuestionGen('Loops', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question15 = new QuestionGen('Loops', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question16 = new QuestionGen('Iterators', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question17 = new QuestionGen('Iterators', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question18 = new QuestionGen('Iterators', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question19 = new QuestionGen('Objects', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question20 = new QuestionGen('Objects', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question21 = new QuestionGen('Objects', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question22 = new QuestionGen('Classes', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question23 = new QuestionGen('Classes', 'What is an array?', 'xxx', 'zzz', 'correct');
-const question24 = new QuestionGen('Classes', 'What is an array?', 'xxx', 'zzz', 'correct');
+const question1 = new QuestionGen('Conditionals', 'If isHungry equals true, which of the following expressions evaluates to true?', ['isHungry !== false', '!isHungry === true', 'isHungry === false'], 'isHungry !== false');
+const question2 = new QuestionGen('Conditionals', 'What is the general purpose of a conditional statement?', ['Conditional statements answer binary (yes-or-no) questions.', 'Conditional statements evaluate code as either true or false.', 'Conditional statements make all computers capable of thought.'], 'Conditional statements evaluate code as either true or false.');
+const question3 = new QuestionGen('Conditionals', 'Which of the following variables contains a truthy value?', ['let varTwo = false;', 'let varFour = '';', 'let varOne = 'false';'], 'let varOne = 'false';');
+
 
 //Array for all questions
 
@@ -41,8 +21,10 @@ var correct = document.getElementById('correct');
 //Incrementing the question number when pressing "Next Question" button
 var questionNumber = 0;
 
+updateQuestion()
+
 function updateQuestion() {
-    this.questionNumber++;
+    //questionNumber++;
     question.innerHTML = allQuestions[questionNumber].question;
     wrong1.innerHTML = allQuestions[questionNumber].wrong1;
     wrong2.innerHTML = allQuestions[questionNumber].wrong2;
@@ -55,10 +37,18 @@ function updateQuestion() {
 var nextQuestion = document.getElementById('nextQuestion')
 
 nextQuestion.onclick = function (){
-    this.questionNumber++;
+    questionNumber++;
+    console.log(questionNumber)
     //Call function 
     updateQuestion();
 };
+
+
+
+//When a quiz is started, in a function: a sort method that returns a new array, which is limited to 10 questions
+//The function should reshuffle the questions and your answers
+
+
 
 
 //Score variable
@@ -87,8 +77,6 @@ alert("you got" + score + "/" + question.length);
 
 
 
-
-
-
-
 //Generating a quiz
+
+ 
