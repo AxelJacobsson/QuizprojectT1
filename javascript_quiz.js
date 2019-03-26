@@ -5,5 +5,5 @@ class Question {
     }
 }
 
-const question1 = new Question('What is my name?', 'Frederik');
+
 
