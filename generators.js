@@ -2,33 +2,30 @@
 
 const question1 = new QuestionGen('Conditionals', 'If isHungry equals true, which of the following expressions evaluates to true?', ['isHungry !== false', '!isHungry === true', 'isHungry === false'], 'isHungry !== false');
 const question2 = new QuestionGen('Conditionals', 'What is the general purpose of a conditional statement?', ['Conditional statements answer binary (yes-or-no) questions.', 'Conditional statements evaluate code as either true or false.', 'Conditional statements make all computers capable of thought.'], 'Conditional statements evaluate code as either true or false.');
-const question3 = new QuestionGen('Conditionals', 'Which of the following variables contains a truthy value?', ['let varTwo = false;', 'let varFour = '';', 'let varOne = 'false';'], 'let varOne = 'false';');
 
 
 //Array for all questions
 
-const allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, question9];
+const allQuestions = [question1, question2];
 
 
-//Question variable linked to html
+//Import HTML elements
 var question = document.getElementById('question');
-
-var wrong1 = document.getElementById('wrong1');
-var wrong2 = document.getElementById('wrong2');
-var correct = document.getElementById('correct');
+var option1 = document.getElementById('option1');
+var option2 = document.getElementById('option2');
+var option3 = document.getElementById('option3');
 
 
 //Incrementing the question number when pressing "Next Question" button
 var questionNumber = 0;
 
-updateQuestion()
+updateQuestion();
 
 function updateQuestion() {
-    //questionNumber++;
     question.innerHTML = allQuestions[questionNumber].question;
-    wrong1.innerHTML = allQuestions[questionNumber].wrong1;
-    wrong2.innerHTML = allQuestions[questionNumber].wrong2;
-    correct.innerHTML = allQuestions[questionNumber].correct;
+    option1.innerHTML = allQuestions[questionNumber].options[0];
+    option2.innerHTML = allQuestions[questionNumber].options[1];
+    option3.innerHTML = allQuestions[questionNumber].options[2];
 }
 
 
