@@ -54,6 +54,8 @@ let score = 0;
 
 //Function for the multiple choice buttons
 //Loop array & alert if the answers are correct or not
+
+/*
 let checkAnswer = document.getElementsByClassName('nextQuestion');
 
 checkAnswer.onclick = function () {
@@ -72,7 +74,7 @@ checkAnswer.onclick = function () {
 //Keep track of the score
 alert("you got" + score + "/" + question.length);
 
-
+*/
 
 //Generating a quiz
 
