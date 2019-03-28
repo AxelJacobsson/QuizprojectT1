@@ -42,7 +42,7 @@ p {
 
 
 
-/* RED DOT BUTTON */
+/* NEXT BUTTON */
 
 .red-dot {
   height: 70px;
@@ -53,6 +53,10 @@ p {
   bottom: 0px;
   right: 0px;
   cursor: pointer;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(150, 150, 150);
 }
 
 .red-dot:hover {
@@ -77,8 +81,11 @@ p {
   justify-content: center;
 }
 
+
+/* INSTRUCTIONS */
+
 .instructions {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   position: absolute;
   top: 50%;
@@ -86,10 +93,15 @@ p {
   transform: translateX(-50%) translateY(-50%);
 }
 
+#instructions-text {
+  font-size: 25px;
+  text-align: left;
+}
+
 /* NAME INPUT */
 
 .what-is-your-name {
-  margin: 100px auto;
+  margin: 22% auto 10% auto;
 
 }
 
@@ -129,8 +141,14 @@ p {
   font-size: 20px;
   max-width: 600px;
   text-align: center;
-  margin: 10% auto 5% auto;
-  
+  margin: 200px auto 100px auto;
+}
+
+#progress {
+  font-size: 40px;
+  float: left;
+  margin-left: 8%;
+
 }
 
 .option-buttons {
@@ -138,7 +156,8 @@ p {
   height: 70px;
   text-align: center;
   font-size: 16px;
-  font-family: 'Helvetica', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700;
   color: #333333;
   /* border: 2px solid #333333; */
   margin: 30px auto;
@@ -161,12 +180,10 @@ p {
 
 .user-result {
   font-size: 130px;
-  margin-top: 10%;
-  margin-left: 10%;
+  margin: 30% auto 7% auto;
 }
 
 .user-result-text {
-  margin-left: 30%;
-  margin-top: 5%;
+  margin: 0 auto;
   max-width: 600px;
 }
