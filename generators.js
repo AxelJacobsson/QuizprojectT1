@@ -28,13 +28,18 @@ function updateQuestion() {
     option1.innerHTML = allQuestions[questionNumber].options[0];
     option2.innerHTML = allQuestions[questionNumber].options[1];
     option3.innerHTML = allQuestions[questionNumber].options[2];
-}
-
-//Function for iniating the end quiz page
-
-function quizEnded () {
-
 };
+
+
+/*When an option is selected, enable the "nextQuestion" button
+
+var nextQuestion = document.getElementById("nextQuestion").disabled = true;
+
+option1.onclick = function (){
+    document.getElementById("nextQuestion").disabled = false;
+};
+
+*/
 
 //When "nextQuestion" button is clicked increment question number
 
@@ -58,6 +63,7 @@ nextQuestion.onclick = function (){
 
 //Score variable
 let score = 0;
+
 
 //Loop the array of questions & display if the answers are correct or not
 
