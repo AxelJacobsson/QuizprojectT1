@@ -33,15 +33,21 @@ function updateQuestion() {
 
 /*When an option is selected, enable the "nextQuestion" button
 
-var nextQuestion = document.getElementById("nextQuestion").disabled = true;
+var nextQuestion = document.getElementById('nextQuestion').disabled = true;
 
-option1.onclick = function (){
-    document.getElementById("nextQuestion").disabled = false;
+option1.onclick = function () {
+    if(document.getElementById("nextQuestion").disabled == true){
+        document.getElementById("nextQuestion").disabled = false;
+    } else {
+        document.getElementById("nextQuestion").disabled = false;
+    }
 };
 
 */
 
-//When "nextQuestion" button is clicked increment question number
+
+//When "nextQuestion" button is clicked increment question number by one
+//Also, re-define the "nextQuestion button" with "endQuiz button" if the "last question - 1" is reached
 
 var nextQuestion = document.getElementById('nextQuestion');
 
@@ -59,6 +65,8 @@ nextQuestion.onclick = function (){
     updateQuestion();
     }
 };
+
+
 
 
 //Score variable
@@ -86,7 +94,7 @@ for (const element of checkAnswer){
 }
 
 //Display the users score on the result page
-document.getElementsById('userscore').innerHTML = score;
+//document.getElementsById('userscore').innerHTML = score;
  
 
 //When a quiz is started, in a function: a sort method that returns a new array, which is limited to 10 questions
