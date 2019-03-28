@@ -79,6 +79,8 @@ for (const element of checkAnswer){
     };
 }
 
+//Display the users score on the result page
+document.getElementsById('userscore').innerHTML = score;
  
 
 //When a quiz is started, in a function: a sort method that returns a new array, which is limited to 10 questions
