@@ -2,11 +2,12 @@
 
 const question1 = new QuestionGen('Conditionals', 'If isHungry equals true, which of the following expressions evaluates to true?', ['isHungry !== false', '!isHungry === true', 'isHungry === false'], 'isHungry !== false');
 const question2 = new QuestionGen('Conditionals', 'What is the general purpose of a conditional statement?', ['Conditional statements answer binary (yes-or-no) questions.', 'Conditional statements evaluate code as either true or false.', 'Conditional statements make all computers capable of thought.'], 'Conditional statements evaluate code as either true or false.');
+const question3 = new QuestionGen('Conditionals', 'XXXXXXXXXXXXXX?', ['Conditional statements answer binary (yes-or-no) questions.', 'Conditional statements evaluate code as either true or false.', 'Conditional statements make all computers capable of thought.'], 'Conditional statements evaluate code as either true or false.');
 
 
 //Array for all questions
 
-const allQuestions = [question1, question2];
+const allQuestions = [question1, question2, question3];
 
 
 //Import HTML elements
@@ -29,16 +30,29 @@ function updateQuestion() {
     option3.innerHTML = allQuestions[questionNumber].options[2];
 }
 
+//Function for iniating the end quiz page
+
+function quizEnded () {
+
+};
 
 //When "nextQuestion" button is clicked increment question number
 
 var nextQuestion = document.getElementById('nextQuestion');
 
 nextQuestion.onclick = function (){
+    if(questionNumber === allQuestions.length - 1) {
+        questionNumber++;
+        console.log(questionNumber);
+        updateQuestion();
+        document.getElementById('endQuiz').innerHTML.style.display = "block";
+        document.getElementById('nextQuestion').innerHTML.style.display= "none";
+    } else {
     questionNumber++;
-    console.log(questionNumber)
+    console.log(questionNumber);
     //Call function 
     updateQuestion();
+    }
 };
 
 
