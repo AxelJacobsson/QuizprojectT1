@@ -5,24 +5,23 @@
         <title>The JavaScript Quiz</title>
         <!-- Link to CSS file -->
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <!-- Link to JavaScript file -->
-        <script src="javascript_quiz.js" type="text/javascript"></script>
     </head>
 
     <body>
         <div>
-            <h1 class="user-result"><span id="userscore"></span>[score] / 20</h1> 
+            <h1 class="user-result"><span id="score"></span> / <span id="totalQuestions"></span></h1> 
         </div>
 
         <div>
-            <p class="user-result-text">Well done, Frederik! You've now finished the quiz. <br> You answered <span id="userscore">[score]</span> out of 20 questions correctly. <br>
+            <p class="user-result-text">Well done, Frederik! You've now finished the quiz. <br> You answered <span id="score">[score]</span> out of 20 questions correctly. <br>
                 It looks like you need to study Classes.</p> 
         </div>
 
         <div class="button">
             <a href="/Users/fm/Desktop/GitHub/QuizprojectT1/quizHTML.html"><button class="red-dot">Retake quiz</button></a>
         </div>
-
+        <!-- Link to Javascript -->
+        <script src="generators.js" type="text/javascript"></script>
     </body>
 
     <footer>
