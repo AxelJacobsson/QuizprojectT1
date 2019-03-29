@@ -37,7 +37,9 @@ function updateQuestion() {
 //When the first question is launched "nextQuestion" button is disabled 
 nextQuestion.disabled = true;
 
-
+//When pressing one of the options buttons
+let checkAnswer = document.getElementsByClassName('option-buttons');
+// checkAnswer.disabled = true;
 
 //When pressing "nextQuestion" button
 nextQuestion.onclick = function (){
@@ -54,15 +56,20 @@ nextQuestion.onclick = function (){
     //Call function 
     updateQuestion();
     }
-    nextQuestion.disabled = true; //Always when next question is launched, "nextQuestion" button and "endQuiz" button are disabled
+    nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
     endQuiz.disabled = true;
+    option1.disabled = false; //When clicked, function is run, option buttons are enabled
+    option2.disabled = false;
+    option3.disabled = false;
+    feedback.innerHTML = ""; //When clicked, function is run, "Correct/Incorrect" values are re-setted
 };
 
 //Score variable
 let score = 0;
 
 //When pressing one of the options buttons
-let checkAnswer = document.getElementsByClassName('option-buttons');
+//let checkAnswer = document.getElementsByClassName('option-buttons');
+//element = 'option-buttons'
 
 for (const element of checkAnswer){
     element.onclick = function (event) {
@@ -72,11 +79,16 @@ for (const element of checkAnswer){
                 score++; //Increment score by 1
                 highScore.innerHTML = "Highscore: " + score; //High score is displayed
                 feedback.innerHTML = "Correct!";
+                
+                
             } else {
                 feedback.innerHTML = "Incorrect!";
             };
-            endQuiz.disabled = false; //Always when selecting option, "nextQuestion" button and "endQuiz" button are enabled
-            nextQuestion.disabled = false;
+            endQuiz.disabled = false; //When clicked, function is run, "nextQuestion" button and "endQuiz" button are enabled
+            nextQuestion.disabled = false; 
+            option1.disabled = true; //When clicked, function is run, option buttons are disabled
+            option2.disabled = true; 
+            option3.disabled = true; 
             
     };
 }
