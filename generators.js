@@ -17,6 +17,8 @@ var option2 = document.getElementById('option2');
 var option3 = document.getElementById('option3');
 var feedback = document.getElementById('feedback');
 var highScore = document.getElementById('highScore');
+var nextQuestion = document.getElementById('nextQuestion');
+var endQuiz = document.getElementById('endQuiz');
 
 
 //Incrementing the question number when pressing "Next Question" button
@@ -32,84 +34,50 @@ function updateQuestion() {
 };
 
 
+//When the first question is launched "nextQuestion" button is disabled 
+nextQuestion.disabled = true;
 
 
 
-
-//When "nextQuestion" button is clicked increment question number by one
-//Also, re-define the "nextQuestion button" with "endQuiz button" if the "last question - 1" is reached
-
-var nextQuestion = document.getElementById('nextQuestion');
-var endQuiz = document.getElementById('endQuiz');
-
-
+//When pressing "nextQuestion" button
 nextQuestion.onclick = function (){
-    questionNumber++;
+    questionNumber++; //Increment question number by one
     
     if(questionNumber === allQuestions.length - 1) {
         updateQuestion();
         console.log(questionNumber);
         document.getElementById('endQuiz').style.display = "block";
-        document.getElementById('nextQuestion').style.display= "none";
+        document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
         
     } else {
     console.log(questionNumber);
     //Call function 
     updateQuestion();
     }
-    nextQuestion.disabled = true;
+    nextQuestion.disabled = true; //Always when next question is launched, "nextQuestion" button and "endQuiz" button are disabled
     endQuiz.disabled = true;
 };
-
-// nextQuestion.onclick = function (){
-//     questionNumber++;
-    
-//     if(questionNumber === allQuestions.length - 1) {
-//         console.log(questionNumber);
-//         updateQuestion();
-//         document.getElementById('endQuiz').innerHTML.style.display = "block";
-//         document.getElementById('nextQuestion').innerHTML.style.display= "none";
-//     } else {
-//     console.log(questionNumber);
-//     //Call function 
-//     updateQuestion();
-//     }
-//     nextQuestion.disabled = true;
-// };
-
-
-
 
 //Score variable
 let score = 0;
 
-
-
-//When an option is selected, enable the "nextQuestion" button
-
-nextQuestion.disabled = true;
-// endQuiz.disabled = true;
-
-//Loop the array of questions & display if the answers are correct or not
-
+//When pressing one of the options buttons
 let checkAnswer = document.getElementsByClassName('option-buttons');
-console.log(checkAnswer)
+
 for (const element of checkAnswer){
     element.onclick = function (event) {
         
-        console.log(event.target);
-            var response = event.target.innerHTML; //Response should equal the choices
-            if(response == allQuestions[questionNumber].answer){
-                score++;
-                highScore.innerHTML = "Highscore: " + score;
+            var response = event.target.innerHTML;
+            if(response == allQuestions[questionNumber].answer){ //When options are selected, loop checks if correct answer
+                score++; //Increment score by 1
+                highScore.innerHTML = "Highscore: " + score; //High score is displayed
                 feedback.innerHTML = "Correct!";
             } else {
                 feedback.innerHTML = "Incorrect!";
             };
-            endQuiz.disabled = false;
+            endQuiz.disabled = false; //Always when selecting option, "nextQuestion" button and "endQuiz" button are enabled
             nextQuestion.disabled = false;
             
-    console.log("end quiz")
     };
 }
 
