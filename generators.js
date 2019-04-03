@@ -44,11 +44,10 @@ var feedback = document.getElementById('feedback');
 var highScore = document.getElementById('highScore');
 var nextQuestion = document.getElementById('nextQuestion');
 var endQuiz = document.getElementById('endQuiz');
-//var score = document.getElementById('score')
 var totalQuestions = document.getElementById('totalQuestions')
 
 
-//Incrementing the question number when pressing "Next Question" button
+// Set question number to 0
 var questionNumber = 0;
 
 updateQuestion();
@@ -66,7 +65,6 @@ nextQuestion.disabled = true;
 
 //When pressing one of the options buttons
 let checkAnswer = document.getElementsByClassName('option-buttons');
-// checkAnswer.disabled = true;
 
 //When pressing "nextQuestion" button
 nextQuestion.onclick = function (){
@@ -74,7 +72,6 @@ nextQuestion.onclick = function (){
     
     if(questionNumber === allQuestions.length - 1) {
         updateQuestion();
-        //console.log(questionNumber);
         document.getElementById('endQuiz').style.display = "block";
         document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
         
@@ -125,6 +122,9 @@ for (const element of checkAnswer){
                 feedback.innerHTML = "Incorrect!";
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
+                // Change the color of the correct question to green, so that user knows which question is correct
+                // HOW???
+
             };
             endQuiz.disabled = false; //When clicked, function is run, "nextQuestion" button and "endQuiz" button are enabled
             nextQuestion.disabled = false; 
