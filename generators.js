@@ -8,7 +8,7 @@ const allQuestions = [
     // Category: Functions
     new QuestionGen('Functions', 'What is wrong with the following code? const greeting = => {console.log("Hello Programmer!");};', ['The greeting function is missing a set of () between the = and =>.', 'The ordering of = and => should be switched.', 'The curly braces {} should be parentheses ().'], 'The greeting function is missing a set of () between the = and =>.'),
     new QuestionGen('Functions', 'Which correctly represents the most condensed form of the function? Recall that this syntax is also known as ‘concise body.’', ['const areaOfCircle = radius => return Math.PI * radius * radius;', 'const areaOfCircle = radius => { Math.PI * radius * radius };', 'const areaOfCircle = radius => Math.PI * radius * radius;'], 'const areaOfCircle = radius => Math.PI * radius * radius;'),
-    new QuestionGen('Functions', 'What’s the purpose of a parameter?', ['To call a function.', 'To allow a function to accept data.', 'To specify actual values passed to a function.'], 'To allow a function to accept data.'),
+    new QuestionGen('Functions', 'What is the purpose of a parameter?', ['To call a function.', 'To allow a function to accept data.', 'To specify actual values passed to a function.'], 'To allow a function to accept data.'),
     // Category: Scope
     new QuestionGen('Scope', 'What is a globally scoped variable?', ['A variable that is defined in a function.', 'A variable that is accessible to any part of the program.', 'A variable that is also a parameter.'], 'A variable that is accessible to any part of the program.'),
     new QuestionGen('Scope', 'Which best defines a variable with block scope?', ['A variable that is defined within a block and only available inside a block.', 'A variable that is available within a function.', 'A variable that is available outside of a block.'], 'A variable that is defined within a block and only available inside a block.'),
@@ -79,15 +79,28 @@ nextQuestion.onclick = function (){
         document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
         
     } else {
-    //console.log(questionNumber);
     updateQuestion();
     }
+
+    // Disable "nextQuestion" button
     nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
     endQuiz.disabled = true;
-    option1.disabled = false; //When clicked, function is run, option buttons are enabled
+    
+    // Enable option buttons
+    option1.disabled = false;
     option2.disabled = false;
     option3.disabled = false;
-    feedback.innerHTML = ""; //When clicked, function is run, "Correct/Incorrect" values are re-setted
+
+    // Reset feedback
+    feedback.innerHTML = "";
+    
+    // Reset colour of buttons
+    option1.style.backgroundColor = "";
+    option2.style.backgroundColor = "";
+    option3.style.backgroundColor = "";
+    option1.style.color = "";
+    option2.style.color = "";
+    option3.style.color = "";
 };
 
 //Score variable
@@ -105,10 +118,13 @@ for (const element of checkAnswer){
                 score++; //Increment score by 1
                 //highScore.innerHTML = "Highscore: " + score; //High score is displayed
                 feedback.innerHTML = "Correct!";
-                
+                element.style.backgroundColor = "rgb(11, 145, 31)";
+                element.style.color = "white";
                 
             } else {
                 feedback.innerHTML = "Incorrect!";
+                element.style.backgroundColor = "rgb(178, 21, 24)";
+                element.style.color = "white";
             };
             endQuiz.disabled = false; //When clicked, function is run, "nextQuestion" button and "endQuiz" button are enabled
             nextQuestion.disabled = false; 

@@ -45,7 +45,7 @@ p {
 /* NEXT BUTTON */
 
 .red-dot {
-  height: 70px;
+  height: 100px;
   width: 100%;
   background-color: rgb(100, 100, 100);
   border-color: transparent;
@@ -109,7 +109,6 @@ p {
 
 .what-is-your-name {
   margin: 22% auto 10% auto;
-
 }
 
 .name-input{
@@ -145,17 +144,10 @@ p {
 /* QUIZ */
 
 #question {
-  font-size: 20px;
+  font-size: 24px;
   max-width: 600px;
   text-align: center;
   margin: 200px auto 100px auto;
-}
-
-#progress {
-  font-size: 40px;
-  float: left;
-  margin-left: 8%;
-
 }
 
 .option-buttons {
@@ -178,7 +170,8 @@ p {
 
 #feedback {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 60px;
+  font-size: 30px;
 }
 
 
