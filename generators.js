@@ -47,6 +47,16 @@ var endQuiz = document.getElementById('endQuiz');
 var totalQuestions = document.getElementById('totalQuestions')
 
 
+
+// Generate a 'Scope' quiz
+const scopeQuiz = allQuestions.filter(function(category) {
+  return category === 'Scope';
+});
+
+console.log(scopeQuiz);
+
+
+
 // Set question number to 0
 var questionNumber = 0;
 
