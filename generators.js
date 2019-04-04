@@ -46,17 +46,18 @@ var nextQuestion = document.getElementById('nextQuestion');
 var endQuiz = document.getElementById('endQuiz');
 var totalQuestions = document.getElementById('totalQuestions')
 
+/*
 //Generate Conditionals Quiz
 const conditionalsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Conditionals';
   });
-  //console.log(conditionalsQuiz);
+  console.log(conditionalsQuiz);
 
 //Generate Functions Quiz
 const functionsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Functions';
   });
-  //console.log(functionsQuiz);
+  console.log(functionsQuiz);
 
 //Generate Scope Quiz
 const scopeQuiz = allQuestions.filter(function(allQuestions) {
@@ -94,6 +95,8 @@ const classesQuiz = allQuestions.filter(function(allQuestions) {
   });
   //console.log(classesQuiz);
 
+
+*/
 
 // Set question number to 0
 var questionNumber = 0;

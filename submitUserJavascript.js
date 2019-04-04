@@ -38,3 +38,5 @@ class User {
       }
     };  
   }
+
+  console.log(users);
