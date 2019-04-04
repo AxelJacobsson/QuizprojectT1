@@ -6,8 +6,8 @@ const allQuestions = [
     new QuestionGen('Conditionals', 'What is the general purpose of a conditional statement?', ['Conditional statements answer binary (yes-or-no) questions.', 'Conditional statements evaluate code as either true or false.', 'Conditional statements make all computers capable of thought.'], 'Conditional statements evaluate code as either true or false.'),
     new QuestionGen('Conditionals', 'Which of the following variables contains a truthy value?', ['let varThree = 0;', 'let varOne = "false";', 'let varFour = "";'], 'let varOne = "false";'),
     // Category: Functions
-    new QuestionGen('Functions', 'What is wrong with the following code? const greeting = => {console.log("Hello Programmer!");};', ['The greeting function is missing a set of () between the = and =>.', 'The ordering of = and => should be switched.', 'The curly braces {} should be parentheses ().'], 'The greeting function is missing a set of () between the = and =>.'),
-    new QuestionGen('Functions', 'Which correctly represents the most condensed form of the function? Recall that this syntax is also known as ‘concise body.’', ['const areaOfCircle = radius => return Math.PI * radius * radius;', 'const areaOfCircle = radius => { Math.PI * radius * radius };', 'const areaOfCircle = radius => Math.PI * radius * radius;'], 'const areaOfCircle = radius => Math.PI * radius * radius;'),
+    new QuestionGen('Functions', 'What is wrong with the following code? const greeting = =&gt; {console.log("Hello Programmer!");};', ['The greeting function is missing a set of () between the = and =&gt;.', 'The ordering of = and =&gt; should be switched.', 'The curly braces {} should be parentheses ().'], 'The greeting function is missing a set of () between the = and =&gt;.'),
+    new QuestionGen('Functions', 'Which correctly represents the most condensed form of the function? Recall that this syntax is also known as concise body.', ['const areaOfCircle = radius = return Math.PI * radius * radius;', 'const areaOfCircle = radius =&gt; { Math.PI * radius * radius };', 'const areaOfCircle = radius =&gt; Math.PI * radius * radius;'], 'const areaOfCircle = radius =&gt; Math.PI * radius * radius;'),
     new QuestionGen('Functions', 'What is the purpose of a parameter?', ['To call a function.', 'To allow a function to accept data.', 'To specify actual values passed to a function.'], 'To allow a function to accept data.'),
     // Category: Scope
     new QuestionGen('Scope', 'What is a globally scoped variable?', ['A variable that is defined in a function.', 'A variable that is accessible to any part of the program.', 'A variable that is also a parameter.'], 'A variable that is accessible to any part of the program.'),
@@ -33,7 +33,7 @@ const allQuestions = [
     new QuestionGen('Classes', 'Which of the following problems do classes alleviate?', ['Classes make it easy to create multiple objects that share property names, but not methods.', 'Classes make it easy to create multiple objects that share property names and methods.', 'Objects make it easy to create multiple classes that share properties and methods.'], 'Classes make it easy to create multiple objects that share property names and methods.'),
     new QuestionGen('Classes', 'What is the purpose of the super keyword?', ['The super keyword automatically create getters and setters for all properties.', 'The super keyword is used in subclasses to call a parent constructor().', 'The super keyword is called in a parent class to access the properties in all subclasses.'], 'The super keyword is used in subclasses to call a parent constructor().'),
     new QuestionGen('Classes', 'What is the purpose of the constructor() method?', ['Each property has a constructor() method. It is called whenever you try to set or get the property.', 'Subclasses inherit the constructor() from the parent class to set property values for the child class.', 'The constructor() is called when you create a new instance of a class. It sets the property values for each instance.'], 'The constructor() is called when you create a new instance of a class. It sets the property values for each instance.')
-];
+]; 
 
 //Import HTML elements
 var question = document.getElementById('question');
@@ -46,15 +46,53 @@ var nextQuestion = document.getElementById('nextQuestion');
 var endQuiz = document.getElementById('endQuiz');
 var totalQuestions = document.getElementById('totalQuestions')
 
+//Generate Conditionals Quiz
+const conditionalsQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Conditionals';
+  });
+  //console.log(conditionalsQuiz);
 
+//Generate Functions Quiz
+const functionsQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Functions';
+  });
+  //console.log(functionsQuiz);
 
-// Generate a 'Scope' quiz
-const scopeQuiz = allQuestions.filter(function(category) {
-  return category === 'Scope';
-});
+//Generate Scope Quiz
+const scopeQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Scope';
+  });
+  //console.log(scopeQuiz);
 
-console.log(scopeQuiz);
+//Generate Arrays Quiz
+const arraysQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Arrays';
+  });
+  //console.log(arraysQuiz);
+  
+//Generate Loops Quiz
+const loopsQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Loops';
+  });
+  //console.log(loopsQuiz);
 
+//Generate Iterators Quiz
+const iteratorsQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Iterators';
+  });
+  //console.log(iteratorsQuiz);
+
+//Generate Objects Quiz
+const objectsQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Objects';
+  });
+  //console.log(objectsQuiz);
+
+//Generate Classes Quiz
+const classesQuiz = allQuestions.filter(function(allQuestions) {
+    return allQuestions.category === 'Classes';
+  });
+  //console.log(classesQuiz);
 
 
 // Set question number to 0
@@ -127,11 +165,15 @@ for (const element of checkAnswer){
                 feedback.innerHTML = "Correct!";
                 element.style.backgroundColor = "rgb(11, 145, 31)";
                 element.style.color = "white";
+                console.log(allQuestions[questionNumber].answer);
+                console.log(response);
                 
             } else {
                 feedback.innerHTML = "Incorrect!";
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
+                console.log(allQuestions[questionNumber].answer);
+                console.log(response);
                 // Change the color of the correct question to green, so that user knows which question is correct
                 // HOW???
 
