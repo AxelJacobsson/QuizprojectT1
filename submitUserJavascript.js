@@ -6,35 +6,9 @@ class User {
       this.firstname = firstname;
       this.score = 0
     }
-}
-  
-  // Checks if user is already registered in local storage
-  
-  
+};
 
-  var users;
-  
-  
-  // Bind the button to a variable for later use
-  // var submit = document.getElementById('submit');
-
-  
-  // if (submit) {
-  //   // Bind the onClick-function to our own function
-  //   submit.onclick = function(){
-  
-  //     // Bind the input field and get the value
-  //     var inputUsername = document.getElementById('type-name');
-  
-  //     if(inputUsername.value.length == 0){
-  //       // We set the resultspan with a new text and return false to get out of this function
-  //       resultSpan.innerText = "You need to enter a username in order to take the quiz";
-  //       return false;
-  //     }
-  //   };  
-  // }
-
-  console.log(users);
+  //When clicking submit, a new user is created and stored to localStorage
 
   document.getElementById('submit').addEventListener('click', (e) => {
     const tempUserName = document.getElementById('type-name').value
@@ -46,9 +20,10 @@ class User {
     const user = new User(tempUserName)
     console.log(user)
 
-    
+  
     localStorage.setItem('activeUser', JSON.stringify(user))
     console.log('user saved to localStorage')
 
+    //user is directed to next page
     location.assign('instructions.html')
   })

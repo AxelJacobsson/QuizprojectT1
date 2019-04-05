@@ -1,9 +1,3 @@
-//Create a function in a seperate js file: Get user from localStorage
-
-
-//Create a function in a seperate js file: Get user from localStorage
-
-
 //Array with all questions
 
 const allQuestions = [
@@ -109,6 +103,7 @@ var questionNumber = 0;
 
 updateQuestion();
 
+
 function updateQuestion() {
     question.innerHTML = allQuestions[questionNumber].question;
     option1.innerHTML = allQuestions[questionNumber].options[0];
@@ -176,9 +171,10 @@ for (const element of checkAnswer){
                 element.style.color = "white";
                 console.log(allQuestions[questionNumber].answer);
                 console.log(response);
+                console.log(score);
                 
               //activeUser.score = score
-              // Save my activeUser back to localStorage
+              //Save my activeUser back to localStorage
 
             } else {
                 feedback.innerHTML = "Incorrect!";
@@ -198,18 +194,3 @@ for (const element of checkAnswer){
             
     };
 }
-
-
-/*Show user result
-
-score.innerHTML = score;
-
-totalQuestions.innerHTML = allQuestions.length;
-*/
-
-//Display the users score on the result page
-//document.getElementsById('userscore').innerHTML = score;
- 
-
-//When a quiz is started, in a function: a sort method that returns a new array, which is limited to 10 questions
-//The function should reshuffle the questions and your answers
