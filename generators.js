@@ -1,3 +1,9 @@
+//Create a function in a seperate js file: Get user from localStorage
+
+
+//Create a function in a seperate js file: Get user from localStorage
+
+
 //Array with all questions
 
 const allQuestions = [
@@ -171,6 +177,9 @@ for (const element of checkAnswer){
                 console.log(allQuestions[questionNumber].answer);
                 console.log(response);
                 
+              //activeUser.score = score
+              // Save my activeUser back to localStorage
+
             } else {
                 feedback.innerHTML = "Incorrect!";
                 element.style.backgroundColor = "rgb(178, 21, 24)";

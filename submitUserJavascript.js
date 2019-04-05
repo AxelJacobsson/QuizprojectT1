@@ -4,39 +4,51 @@ class User {
     // The constructor for our class, which will allow us to create new objects of our class
     constructor(firstname) {
       this.firstname = firstname;
+      this.score = 0
     }
-  }
+}
   
   // Checks if user is already registered in local storage
   
+  
+
   var users;
   
-  if (localStorage.getItem('users') === null) {
-    users = [];
-  } else {
-    users = JSON.parse(localStorage.getItem('users'));
-    for (let i = 0; i < users.length; i++) {
-      users[i] = new User(users[i].firstname);
-    }
-  }
   
   // Bind the button to a variable for later use
-  var submit = document.getElementById('submit');
+  // var submit = document.getElementById('submit');
 
   
-  if (submit) {
-    // Bind the onClick-function to our own function
-    submit.onclick = function(){
+  // if (submit) {
+  //   // Bind the onClick-function to our own function
+  //   submit.onclick = function(){
   
-      // Bind the input field and get the value
-      var inputUsername = document.getElementById('type-name');
+  //     // Bind the input field and get the value
+  //     var inputUsername = document.getElementById('type-name');
   
-      if(inputUsername.value.length == 0){
-        // We set the resultspan with a new text and return false to get out of this function
-        resultSpan.innerText = "You need to enter a username in order to take the quiz";
-        return false;
-      }
-    };  
-  }
+  //     if(inputUsername.value.length == 0){
+  //       // We set the resultspan with a new text and return false to get out of this function
+  //       resultSpan.innerText = "You need to enter a username in order to take the quiz";
+  //       return false;
+  //     }
+  //   };  
+  // }
 
   console.log(users);
+
+  document.getElementById('submit').addEventListener('click', (e) => {
+    const tempUserName = document.getElementById('type-name').value
+
+    if(tempUserName.length === 0) {
+      return false
+    }
+
+    const user = new User(tempUserName)
+    console.log(user)
+
+    
+    localStorage.setItem('activeUser', JSON.stringify(user))
+    console.log('user saved to localStorage')
+
+    location.assign('instructions.html')
+  })
