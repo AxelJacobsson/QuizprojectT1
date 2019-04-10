@@ -40,7 +40,7 @@ const allQuestions = [
     new Question('Iterators', 'Which of the following methods returns a new array?', ['.filter()', '.some()', '.every()'], '.filter()'),
     // Category: Objects
     new Question('Objects', 'Which of the following Object methods can be used to copy all of the properties of an object into a new object?', ['Object.entries()', 'myObject.hasOwnProperty()', 'Object.assign()'], 'Object.assign()'),
-    new Question('Objects', 'What is a method?', ['A method is property with a function as its value.', 'A method is a general term used to describe how to create objects.', 'A method is a function that takes an object as its parameter.'], 'A method is property with a function as its value.'),
+    new Question('Objects', 'What is a method?', ['A method is a property with a function as its value.', 'A method is a general term used to describe how to create objects.', 'A method is a function that takes an object as its parameter.'], 'A method is a property with a function as its value.'),
     new Question('Objects', 'What is a factory function?', ['A function that takes an object as an argument and then modifies it.', 'A function that returns an object.', 'A function that returns an array of objects.'], 'A function that returns an object.'),
     // Category: Classes
     new Question('Classes', 'Which of the following problems do classes alleviate?', ['Classes make it easy to create multiple objects that share property names, but not methods.', 'Classes make it easy to create multiple objects that share property names and methods.', 'Objects make it easy to create multiple classes that share properties and methods.'], 'Classes make it easy to create multiple objects that share property names and methods.'),
