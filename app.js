@@ -38,7 +38,7 @@ if(location.href.includes('welcome-message.html')) {
 
 
 
-} else if (location.href.includes('quizHTML.html')) {
+} else if (location.href.includes('quiz.html')) {
 
     // is there a user in localstorage? If not, redirect to welcome screen
 
@@ -153,7 +153,7 @@ for (const element of checkAnswer){
 
 
     
-} else if (location.href.includes('quiz-end.html')) {
+} else if (location.href.includes('results.html')) {
 
      // is there a user in localstorage? If not, redirect to welcome screen
 

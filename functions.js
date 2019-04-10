@@ -31,6 +31,7 @@ const welcomeFlow = function() {
     document.getElementById('submit').addEventListener('click', (e) => {
     const tempUserName = document.getElementById('type-name').value
 
+    
     if(tempUserName.length === 0) {
       return false
     }
