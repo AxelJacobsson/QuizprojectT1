@@ -7,24 +7,10 @@ if(location.href.includes('welcome-message.html')) {
 
 
 
-
-
-
-
-
-
-
-
-
 } else if (location.href.includes('what-is-your-name.html')) {
     console.log('Currently on the name page')
 
     welcomeFlow()
-
-
-
-
-
 
 
 
@@ -37,15 +23,18 @@ if(location.href.includes('welcome-message.html')) {
 
 
 
-
 } else if (location.href.includes('quiz.html')) {
 
     // is there a user in localstorage? If not, redirect to welcome screen
 
-    if (getUsers() == null) {location.assign('welcome-message.html')}
+    if (getUsers() == null) {location.assign('welcome-message.html')
+}
 
 
-    //Import HTML elements
+
+
+
+//Import HTML elements
 var question = document.getElementById('question');
 var option1 = document.getElementById('option1');
 var option2 = document.getElementById('option2');
@@ -56,11 +45,10 @@ var nextQuestion = document.getElementById('nextQuestion');
 var endQuiz = document.getElementById('endQuiz');
 var totalQuestions = document.getElementById('totalQuestions')
 
-    // Set question number to 0
-    var questionNumber = 0;
 
-    updateQuestion();
-
+// Set question number to 0
+var questionNumber = 0;
+updateQuestion();
 
 
 //When the first question is launched "nextQuestion" button is disabled 
@@ -134,21 +122,11 @@ for (const element of checkAnswer){
                 // HOW???
 
             };
+            
             resetButtonsNewQuestion();
             
     };
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
