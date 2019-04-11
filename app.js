@@ -12,23 +12,26 @@ if(location.href.includes('welcome-message.html')) {
 
     welcomeFlow()
 
+}
 
 
-
-} else if (location.href.includes('instructions.html')) {
+else if (location.href.includes('instructions.html')) {
 
     //activeUser = getUsers();
     document.getElementById('user-name').innerText = activeUser.firstname
+    
+
+}
 
 
-
-
-} else if (location.href.includes('quiz.html')) {
+else if (location.href.includes('quiz.html')) {
 
     // is there a user in localstorage? If not, redirect to welcome screen
 
     if (getUsers() == null) {location.assign('welcome-message.html')
 }
+
+
 
 
 
@@ -138,3 +141,4 @@ for (const element of checkAnswer){
 
 
 console.log("Current score: " + activeUser.score);
+console.log("Current score: " + activeUser);

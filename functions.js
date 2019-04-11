@@ -1,12 +1,4 @@
-/**
- * SECTION - WELCOME MESSAGE
- */
 
-
-
-/**
- * SECTION - ENTER NAME
- */
 
  //Get user from localStorage
 
@@ -20,8 +12,6 @@ function getUsers() {
 function saveUser(user) {
     return localStorage.setItem('activeUser', JSON.stringify(user))
 };
-
-
 
 
 // Initiates the user welcome flow where it reads the username and saves it to localstorage
