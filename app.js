@@ -17,7 +17,7 @@ if(location.href.includes('welcome-message.html')) {
 
 } else if (location.href.includes('instructions.html')) {
 
-    activeUser = getUsers();
+    //activeUser = getUsers();
     document.getElementById('user-name').innerText = activeUser.firstname
 
 
@@ -115,7 +115,6 @@ for (const element of checkAnswer){
                 feedback.innerHTML = "Incorrect!";
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
-            
                 // Change the color of the correct question to green, so that user knows which question is correct
                 // HOW???
 
@@ -136,3 +135,6 @@ for (const element of checkAnswer){
      if (getUsers() == null) {location.assign('welcome-message.html')}
 
 };
+
+
+console.log("Current score: " + activeUser.score);

@@ -22,6 +22,8 @@ function saveUser(user) {
 };
 
 
+
+
 // Initiates the user welcome flow where it reads the username and saves it to localstorage
 const welcomeFlow = function() {
     const users = getUsers()

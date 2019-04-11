@@ -4,6 +4,6 @@ class User {
     // The constructor for our class, which will allow us to create new objects of our class
     constructor(firstname) {
       this.firstname = firstname;
-      this.score = 0
+      this.score = 0;
     }
 };

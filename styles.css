@@ -10,20 +10,17 @@
 }
 
 html {
-  height: 100%;
   overflow: hidden;
   background-color: rgb(40, 40, 40);
-  
 }
 
 body {
   font-family: 'Roboto Mono', monospace;
   font-weight: 400;
-  color: #333333;
   text-align: center;
-  height: 100%;
   color: white;
   margin: 0 auto;
+  height: 100%;
 }
 
 h1 {
@@ -36,11 +33,6 @@ p {
   line-height: 1.4;
 }
 
-.button {
-  font-size: 20px;
-}
-
-
 
 /* NEXT BUTTON */
 
@@ -50,6 +42,7 @@ p {
   background-color: rgb(100, 100, 100);
   border-color: transparent;
   position: fixed;
+  margin-bottom: 0px;
   cursor: pointer;
   font-family: 'Roboto Mono', monospace;
   font-weight: 700;
@@ -117,7 +110,8 @@ p {
 .name-input input[type="text"],
 .name-input textarea,
 .name-input select {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
   outline: none;
 	display: block;
 	width: 100%;
