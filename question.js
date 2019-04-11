@@ -14,11 +14,12 @@ class Question {
 //Array with all questions
 
 const allQuestions = [
+     /*
     // Category: Conditionals
     new Question('Conditionals', 'If isHungry equals true, which of the following expressions evaluates to true?', ['isHungry !== false', '!isHungry === true', 'isHungry === false'], 'isHungry !== false'),
     new Question('Conditionals', 'What is the general purpose of a conditional statement?', ['Conditional statements answer binary (yes-or-no) questions.', 'Conditional statements evaluate code as either true or false.', 'Conditional statements make all computers capable of thought.'], 'Conditional statements evaluate code as either true or false.'),
     new Question('Conditionals', 'Which of the following variables contains a truthy value?', ['let varThree = 0;', 'let varOne = "false";', 'let varFour = "";'], 'let varOne = "false";'),
-    /*
+   
     // Category: Functions
     new Question('Functions', 'What is wrong with the following code? const greeting = =&gt; {console.log("Hello Programmer!");};', ['The greeting function is missing a set of () between the = and =&gt;.', 'The ordering of = and =&gt; should be switched.', 'The curly braces {} should be parentheses ().'], 'The greeting function is missing a set of () between the = and =&gt;.'),
     new Question('Functions', 'Which correctly represents the most condensed form of the function? Recall that this syntax is also known as concise body.', ['const areaOfCircle = radius = return Math.PI * radius * radius;', 'const areaOfCircle = radius =&gt; { Math.PI * radius * radius };', 'const areaOfCircle = radius =&gt; Math.PI * radius * radius;'], 'const areaOfCircle = radius =&gt; Math.PI * radius * radius;'),

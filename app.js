@@ -73,7 +73,6 @@ nextQuestion.onclick = function (){
     // Disable "nextQuestion" button
     disableNextQuestion();
     
-    
     // Enable option buttons
     enableOptionButtons();
 
@@ -104,9 +103,6 @@ for (const element of checkAnswer){
                 feedback.innerHTML = "Correct!";
                 element.style.backgroundColor = "rgb(11, 145, 31)";
                 element.style.color = "white";
-                console.log(allQuestions[questionNumber].answer);
-                console.log(response);
-                console.log(score);
                 
               activeUser.score = score
               saveUser(activeUser)
@@ -116,8 +112,7 @@ for (const element of checkAnswer){
                 feedback.innerHTML = "Incorrect!";
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
-                console.log(allQuestions[questionNumber].answer);
-                console.log(response);
+            
                 // Change the color of the correct question to green, so that user knows which question is correct
                 // HOW???
 

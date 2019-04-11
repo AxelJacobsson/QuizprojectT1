@@ -17,8 +17,8 @@ html {
 }
 
 body {
-  font-family: 'Helvetica', sans-serif;
-  font-weight: 700;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
   color: #333333;
   text-align: center;
   height: 100%;
@@ -46,16 +46,14 @@ p {
 
 .red-dot {
   height: 100px;
-  width: 100%;
+  width: 200px;
   background-color: rgb(100, 100, 100);
   border-color: transparent;
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
+  position: relative;
   cursor: pointer;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-family: 'Roboto Mono', monospace;
   font-weight: 700;
+  font-size: 20px;
   color: rgb(150, 150, 150);
 }
 
@@ -155,11 +153,12 @@ p {
   height: 70px;
   text-align: center;
   font-size: 16px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
   color: #333333;
   /* border: 2px solid #333333; */
   margin: 30px auto;
+  padding: 0 50px;
   cursor: pointer;
   display: block /* Make the buttons appear below each other */
 }
