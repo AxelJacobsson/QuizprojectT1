@@ -63,6 +63,9 @@ nextQuestion.onclick = function (){
     
     if(questionNumber === allQuestions.length - 1) {
         updateQuestion();
+        resetFeedback();
+        resetColorButtons();
+        enableOptionButtons();
         document.getElementById('endQuiz').style.display = "block";
         document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
         
