@@ -32,8 +32,8 @@ else if (location.href.includes('quiz.html')) {
 
 if (location.href.includes('results.html')) {
 
-    console.log("hello")
     document.getElementById('score').innerText = activeUser.score
+    document.getElementById('quiz-length').innerText = allQuestions.length
     document.getElementById('user-name').innerText = activeUser.firstname
 
 }
