@@ -1,13 +1,7 @@
 //  APP Game Controller
 let activeUser = getUsers();
 
-if(location.href.includes('welcome-message.html')) {
-    console.log('Currently on the welcome screen')
-
-
-
-
-} else if (location.href.includes('what-is-your-name.html')) {
+if (location.href.includes('index.html')) {
     console.log('Currently on the name page')
 
     welcomeFlow()
@@ -20,6 +14,7 @@ else if (location.href.includes('instructions.html')) {
     //activeUser = getUsers();
     document.getElementById('user-name').innerText = activeUser.firstname
     
+    startQuiz()
 
 }
 
@@ -28,10 +23,20 @@ else if (location.href.includes('quiz.html')) {
 
     // is there a user in localstorage? If not, redirect to welcome screen
 
-    if (getUsers() == null) {location.assign('welcome-message.html')
+    if (getUsers() == null) {
+        location.assign('welcome-message.html')
+    }
+    
 }
 
 
+if (location.href.includes('results.html')) {
+
+    console.log("hello")
+    document.getElementById('score').innerText = activeUser.score
+    document.getElementById('user-name').innerText = activeUser.firstname
+
+}
 
 
 
@@ -107,7 +112,7 @@ for (const element of checkAnswer){
                 score++; //Increment score by 1
                 //highScore.innerHTML = "Highscore: " + score; //High score is displayed
                 feedback.innerHTML = "Correct!";
-                element.style.backgroundColor = "rgb(11, 145, 31)";
+                element.style.backgroundColor = 'rgb(11, 85, 221)';
                 element.style.color = "white";
                 
               activeUser.score = score
@@ -131,14 +136,14 @@ for (const element of checkAnswer){
 
 
     
-} else if (location.href.includes('results.html')) {
+// } else if (location.href.includes('results.html')) {
 
-     // is there a user in localstorage? If not, redirect to welcome screen
+//      // is there a user in localstorage? If not, redirect to welcome screen
 
-     if (getUsers() == null) {location.assign('welcome-message.html')}
+//      if (getUsers() == null) {location.assign('welcome-message.html')}
 
-};
+// };
 
 
 console.log("Current score: " + activeUser.score);
-console.log("Current score: " + activeUser);
+console.log("Current score: " + activeUser.firstname);

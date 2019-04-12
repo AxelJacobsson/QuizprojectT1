@@ -1,6 +1,4 @@
-
-
- //Get user from localStorage
+//Get user from localStorage
 
 function getUsers() {
     return JSON.parse(localStorage.getItem('activeUser'))
@@ -14,7 +12,7 @@ function saveUser(user) {
 };
 
 
-// Initiates the user welcome flow where it reads the username and saves it to localstorage
+// Initiates the user welcome flow where it reads the username and saves it to localStorage
 const welcomeFlow = function() {
     const users = getUsers()
 
@@ -35,15 +33,32 @@ const welcomeFlow = function() {
     localStorage.setItem('activeUser', JSON.stringify(user))
     console.log('user saved to localStorage')
 
-    //user is directed to next page
+    //user is directed instructions page
     location.assign('instructions.html')
   })
 }
 
 
-/**
- * SECTION - QUIZ
- */
+const startQuiz = function() {
+    document.getElementById('start-quiz').addEventListener('click', (e) => {
+       
+        //user is directed to quiz
+        location.assign('quiz.html')
+      })
+}
+
+/*
+const endQuiz = function() {
+    document.getElementById('endQuiz').addEventListener('click', (e) => {
+    
+        location.assign('results.html')
+      })
+}
+*/
+
+
+
+//SECTION - QUIZ
 
 function updateQuestion() {
     question.innerHTML = allQuestions[questionNumber].question;
@@ -89,12 +104,6 @@ function resetButtonsNewQuestion() {
     option3.disabled = true; 
 
 };
-
-
-/**
- * SECTION - QUIZ ENDED
- */
-
 
 
 
