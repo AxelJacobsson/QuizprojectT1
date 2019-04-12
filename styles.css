@@ -26,7 +26,7 @@ body {
 h1 {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  font-size: 50px;
+  font-size: 60px;
   line-height: 1.1;
   letter-spacing: 0.1em;
 }
@@ -86,7 +86,22 @@ a:active {
   color: white;
 }
 
+.button-2 {
+  height: 80px;
+  width: 180px;
+  background-color: rgb(200, 200, 200);
+  border-color: transparent;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgb(150, 150, 150);
+}
 
+.button-2:hover {
+  background-color: rgb(11, 85, 221);
+  color: white;
+}
 
 #nextQuestion {
   display: block;
@@ -111,11 +126,6 @@ a:active {
   margin-bottom: 70px;
   margin-left: auto;
   margin-right: auto;
-}
-
-#instructions-text {
-  font-size: 25px;
-  text-align: left;
 }
 
 /* NAME INPUT */
@@ -197,6 +207,9 @@ a:active {
 }
 
 .user-result-text {
-  margin: 0 auto;
   max-width: 600px;
+  margin-top: 0px;
+  margin-bottom: 70px;
+  margin-left: auto;
+  margin-right: auto;
 }
