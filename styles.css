@@ -166,8 +166,10 @@ a:active {
   font-size: 20px;
   font-weight: 300;
   max-width: 800px;
+  min-height: 100px;
   text-align: center;
-  margin: 140px auto 80px auto;
+  margin: 140px auto 50px auto;
+  /*margin: 140px auto 80px auto;*/
 
 }
 
