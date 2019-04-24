@@ -19,48 +19,33 @@ let activeUser = getUsers();
 
 if (location.href.includes('index.html')) {
     console.log('Currently on the name page')
-
     welcomeFlow()
-
 }
 
 
 else if (location.href.includes('instructions.html')) {
-
     //activeUser = getUsers();
-    document.getElementById('user-name').innerText = activeUser.firstname
-    
+    document.getElementById('user-name').innerText = activeUser.firstname  
     startQuiz()
-
 }
 
 
 else if (location.href.includes('quiz.html')) {
-
     // is there a user in localstorage? If not, redirect to welcome screen
-
     if (getUsers() == null) {
         location.assign('welcome-message.html')
     } else {
         document.getElementById('quiz-length').innerText = allQuestions.length
         document.getElementById('currentQuestion').innerText = questionNumber
     }
-    
 }
 
 
 if (location.href.includes('results.html')) {
-
     document.getElementById('score').innerText = activeUser.score
     document.getElementById('quiz-length').innerText = allQuestions.length
     document.getElementById('user-name').innerText = activeUser.firstname
-
 }
-
-
-
-
-
 
 
 // Set question number to 0
@@ -121,9 +106,9 @@ for (const element of checkAnswer){
                 element.style.color = "white";
                 userScore.innerHTML = `Score: ${score}`;
                 
-              activeUser.score = score
-              saveUser(activeUser)
-              //Save my activeUser back to localStorage
+                activeUser.score = score
+                saveUser(activeUser)
+                //Save my activeUser back to localStorage
 
             } else {
                 feedback.innerHTML = 'Incorrect!' ;
