@@ -1,3 +1,19 @@
+//Import HTML elements
+var question = document.getElementById('question');
+var option1 = document.getElementById('option1');
+var option2 = document.getElementById('option2');
+var option3 = document.getElementById('option3');
+var feedback = document.getElementById('feedback');
+var showCorrectAnswer = document.getElementById('showCorrectAnswer');
+var highScore = document.getElementById('highScore');
+var nextQuestion = document.getElementById('nextQuestion');
+var endQuiz = document.getElementById('endQuiz');
+var totalQuestions = document.getElementById('totalQuestions');
+var userScore = document.getElementById('score');
+var currentQuestion = document.getElementById('currentQuestion');
+
+
+
 //  APP Game Controller
 let activeUser = getUsers();
 
@@ -25,6 +41,9 @@ else if (location.href.includes('quiz.html')) {
 
     if (getUsers() == null) {
         location.assign('welcome-message.html')
+    } else {
+        document.getElementById('quiz-length').innerText = allQuestions.length
+        document.getElementById('currentQuestion').innerText = questionNumber
     }
     
 }
@@ -42,19 +61,6 @@ if (location.href.includes('results.html')) {
 
 
 
-//Import HTML elements
-var question = document.getElementById('question');
-var option1 = document.getElementById('option1');
-var option2 = document.getElementById('option2');
-var option3 = document.getElementById('option3');
-var feedback = document.getElementById('feedback');
-var showCorrectAnswer = document.getElementById('showCorrectAnswer');
-var highScore = document.getElementById('highScore');
-var nextQuestion = document.getElementById('nextQuestion');
-var endQuiz = document.getElementById('endQuiz');
-var totalQuestions = document.getElementById('totalQuestions');
-var userScore = document.getElementById('score');
-var progress = document.getElementById('progress');
 
 
 // Set question number to 0
@@ -103,9 +109,6 @@ nextQuestion.onclick = function (){
 //Score variable
 let score = 0;
 
-//When pressing one of the options buttons
-//let checkAnswer = document.getElementsByClassName('option-buttons');
-//element = 'option-buttons'
 
 for (const element of checkAnswer){
     element.onclick = function (event) {
@@ -128,10 +131,6 @@ for (const element of checkAnswer){
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
                 
-                // This doesn't work
-                //allQuestions[questionNumber].answer.style.backgroundColor = "red";
-                
-                // Trying with a function
                 highlightCorrectAnswer()
             };
             

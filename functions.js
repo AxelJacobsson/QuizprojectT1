@@ -65,6 +65,7 @@ function updateQuestion() {
     option1.innerHTML = allQuestions[questionNumber].options[0];
     option2.innerHTML = allQuestions[questionNumber].options[1];
     option3.innerHTML = allQuestions[questionNumber].options[2];
+    currentQuestion++;
 };
 
 
