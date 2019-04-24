@@ -1,61 +1,50 @@
 //Get user from localStorage
-
 function getUsers() {
     return JSON.parse(localStorage.getItem('activeUser'))
-
 };
 
 //Save user to localStorage
-
 function saveUser(user) {
     return localStorage.setItem('activeUser', JSON.stringify(user))
 };
 
-
 // Initiates the user welcome flow where it reads the username and saves it to localStorage
 const welcomeFlow = function() {
     const users = getUsers()
-
-  //When clicking submit, a new user is created and stored to localStorage
-
+    //When clicking submit, a new user is created and stored to localStorage
     document.getElementById('submit').addEventListener('click', (e) => {
-    const tempUserName = document.getElementById('type-name').value
+        const tempUserName = document.getElementById('type-name').value
+   
+        if(tempUserName.length === 0) {
+            return false
+        }
 
-    
-    if(tempUserName.length === 0) {
-      return false
-    }
+        // New user is created from our User Class
+        const user = new User(tempUserName)
 
-    const user = new User(tempUserName)
-    console.log(user)
+        // New user is saved to local storage
+        localStorage.setItem('activeUser', JSON.stringify(user))
 
-  
-    localStorage.setItem('activeUser', JSON.stringify(user))
-    console.log('user saved to localStorage')
-
-    //user is directed instructions page
-    location.assign('instructions.html')
-  })
-}
-
+        // User is directed to next page
+        location.assign('instructions.html')
+    })
+};
 
 const startQuiz = function() {
     document.getElementById('start-quiz').addEventListener('click', (e) => {
-       
-        //user is directed to quiz
+        // User is directed to quiz
         location.assign('quiz.html')
-      })
+    })
 }
 
 
-//SECTION - QUIZ
+// SECTION - QUIZ
 
 function updateQuestion() {
     question.innerHTML = assessmentQuiz[questionNumber].question;
     option1.innerHTML = assessmentQuiz[questionNumber].options[0];
     option2.innerHTML = assessmentQuiz[questionNumber].options[1];
     option3.innerHTML = assessmentQuiz[questionNumber].options[2];
-    currentQuestion++;
 };
 
 
