@@ -56,6 +56,21 @@ const allQuestions = [
     new Question('Classes', 'What is the purpose of the constructor() method?', ['Each property has a constructor() method. It is called whenever you try to set or get the property.', 'Subclasses inherit the constructor() from the parent class to set property values for the child class.', 'The constructor() is called when you create a new instance of a class. It sets the property values for each instance.'], 'The constructor() is called when you create a new instance of a class. It sets the property values for each instance.')
 ]; 
 
+
+/*filter method
+
+const scopeQuiz = allQuestions.filter(category) {
+  return category === 'Scope';
+  
+};
+
+console.log(scopeQuiz)
+
+
+
+
+
+
 // //Import HTML elements
 // var question = document.getElementById('question');
 // var option1 = document.getElementById('option1');

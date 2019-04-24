@@ -12,7 +12,8 @@ var totalQuestions = document.getElementById('totalQuestions');
 var userScore = document.getElementById('score');
 var currentQuestion = document.getElementById('currentQuestion');
 
-
+shuffle(allQuestions);
+console.log(allQuestions);
 
 //  APP Game Controller
 let activeUser = getUsers();
@@ -24,7 +25,7 @@ if (location.href.includes('index.html')) {
 
 
 else if (location.href.includes('instructions.html')) {
-    //activeUser = getUsers();
+ 
     document.getElementById('user-name').innerText = activeUser.firstname  
     startQuiz()
 }
@@ -33,7 +34,7 @@ else if (location.href.includes('instructions.html')) {
 else if (location.href.includes('quiz.html')) {
     // is there a user in localstorage? If not, redirect to welcome screen
     if (getUsers() == null) {
-        location.assign('welcome-message.html')
+        location.assign('index.html')
     } else {
         document.getElementById('quiz-length').innerText = allQuestions.length
         document.getElementById('currentQuestion').innerText = questionNumber

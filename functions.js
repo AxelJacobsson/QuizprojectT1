@@ -128,6 +128,22 @@ function highlightCorrectAnswer() {
 };
 
 
+//Shuffle questions
+
+function shuffle(allQuestions) {
+    var currentIndex = allQuestions.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+  
+        temporaryValue = allQuestions[currentIndex];
+        allQuestions[currentIndex] = allQuestions[randomIndex];
+        allQuestions[randomIndex] = temporaryValue;
+    }
+    return allQuestions;
+  }
+  
+
 
 
 
