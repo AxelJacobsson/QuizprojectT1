@@ -14,6 +14,8 @@ var currentQuestion = document.getElementById('currentQuestion');
 
 shuffle(allQuestions);
 console.log(allQuestions);
+const assessmentQuiz = allQuestions.slice(0, 16);
+console.log(assessmentQuiz);
 
 //  APP Game Controller
 let activeUser = getUsers();
@@ -36,7 +38,7 @@ else if (location.href.includes('quiz.html')) {
     if (getUsers() == null) {
         location.assign('index.html')
     } else {
-        document.getElementById('quiz-length').innerText = allQuestions.length
+        document.getElementById('quiz-length').innerText = assessmentQuiz.length
         document.getElementById('currentQuestion').innerText = questionNumber
     }
 }
@@ -44,7 +46,7 @@ else if (location.href.includes('quiz.html')) {
 
 if (location.href.includes('results.html')) {
     document.getElementById('score').innerText = activeUser.score
-    document.getElementById('quiz-length').innerText = allQuestions.length
+    document.getElementById('quiz-length').innerText = assessmentQuiz.length
     document.getElementById('user-name').innerText = activeUser.firstname
 }
 
@@ -64,7 +66,7 @@ let checkAnswer = document.getElementsByClassName('option-buttons');
 nextQuestion.onclick = function (){
     questionNumber++; //Increment question number by one
     
-    if(questionNumber === allQuestions.length - 1) {
+    if(questionNumber === assessmentQuiz.length - 1) {
         updateQuestion();
         resetFeedback();
         resetColorButtons();
@@ -100,7 +102,7 @@ for (const element of checkAnswer){
     element.onclick = function (event) {
         
             var response = event.target.innerHTML;
-            if(response == allQuestions[questionNumber].answer){ //When options are selected, loop checks if correct answer
+            if(response == assessmentQuiz[questionNumber].answer){ //When options are selected, loop checks if correct answer
                 score++; //Increment score by 1
                 feedback.innerHTML = "Correct!";
                 element.style.backgroundColor = 'rgb(11, 85, 221)';
@@ -113,31 +115,12 @@ for (const element of checkAnswer){
 
             } else {
                 feedback.innerHTML = 'Incorrect!';
-                showCorrectAnswer.innerHTML = `The correct answer is '${allQuestions[questionNumber].answer}'`
+                showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
-                
-                highlightCorrectAnswer()
+                //highlightCorrectAnswer()
             };
             
             resetButtonsNewQuestion();       
     };
 }
-
-
-
-
-
-
-    
-// } else if (location.href.includes('results.html')) {
-
-//      // is there a user in localstorage? If not, redirect to welcome screen
-
-//      if (getUsers() == null) {location.assign('welcome-message.html')}
-
-// };
-
-
-console.log("Current score: " + activeUser.score);
-console.log("Current score: " + activeUser.firstname);

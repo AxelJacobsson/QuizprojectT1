@@ -47,24 +47,14 @@ const startQuiz = function() {
       })
 }
 
-/*
-const endQuiz = function() {
-    document.getElementById('endQuiz').addEventListener('click', (e) => {
-    
-        location.assign('results.html')
-      })
-}
-*/
-
-
 
 //SECTION - QUIZ
 
 function updateQuestion() {
-    question.innerHTML = allQuestions[questionNumber].question;
-    option1.innerHTML = allQuestions[questionNumber].options[0];
-    option2.innerHTML = allQuestions[questionNumber].options[1];
-    option3.innerHTML = allQuestions[questionNumber].options[2];
+    question.innerHTML = assessmentQuiz[questionNumber].question;
+    option1.innerHTML = assessmentQuiz[questionNumber].options[0];
+    option2.innerHTML = assessmentQuiz[questionNumber].options[1];
+    option3.innerHTML = assessmentQuiz[questionNumber].options[2];
     currentQuestion++;
 };
 
@@ -116,17 +106,17 @@ function resetButtonsNewQuestion() {
 
 };
 
-
+/*
 function highlightCorrectAnswer() {
     const answer = document.querySelectorAll('.option-buttons')
     for (let i = 0; i < answer.length; i++) {
-        if(answer[i].innerHTML == allQuestions[i].answer) {
-            answer[i].style.borderWidth = '5px'
-            answer[i].style.borderColor = 'rgb(11, 85, 221)'
+        if(answer[i].innerHTML == assessmentQuiz[i].answer) {
+            answer[i].style.borderWidth = "5px"
+            answer[i].style.borderColor = "rgb(11, 85, 221)"
         }
     }
 };
-
+*/
 
 //Shuffle questions
 
@@ -142,78 +132,3 @@ function shuffle(allQuestions) {
     }
     return allQuestions;
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* function runQuiz() {
-    if(quiz.isEnded()){
-        //showScores();
-    } else {
-        //show questions
-    }
-}
-
-
-//var quiz = new Quiz(questions);
-
-//Score variable
-let score = 0;
-
-//When an option is selected, enable the "nextQuestion" button
-//nextQuestion.disabled = true;
-
-
-let checkAnswer = document.getElementsByClassName('option-buttons'); // import HTML option buttons
-console.log(checkAnswer) // why do we need to console log this?
-for (const element of checkAnswer){ // for loop
-    element.onclick = function (event) { // run this function when any option button is clicked
-        
-        console.log(event.target); // why do we need to console log this?
-            var response = event.target.innerHTML; // save user response to variable called response
-            if(response == allQuestions[questionNumber].answer){ // check is user choice is correct
-                score++; // increment user score by 1 if answer is correct
-                highScore.innerHTML = "Highscore: " + score; // print the current user score
-                feedback.innerHTML = "Correct!"; // feedback to user 
-            } else {
-                feedback.innerHTML = "Incorrect!"; // feedback to user 
-            };
-            endQuiz.disabled = false;
-            nextQuestion.disabled = false;
-    };
-} */

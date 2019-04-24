@@ -57,32 +57,6 @@ const allQuestions = [
 ]; 
 
 
-/*filter method
-
-const scopeQuiz = allQuestions.filter(category) {
-  return category === 'Scope';
-  
-};
-
-console.log(scopeQuiz)
-
-
-
-
-
-
-// //Import HTML elements
-// var question = document.getElementById('question');
-// var option1 = document.getElementById('option1');
-// var option2 = document.getElementById('option2');
-// var option3 = document.getElementById('option3');
-// var feedback = document.getElementById('feedback');
-// var highScore = document.getElementById('highScore');
-// var nextQuestion = document.getElementById('nextQuestion');
-// var endQuiz = document.getElementById('endQuiz');
-// var totalQuestions = document.getElementById('totalQuestions')
-
-/*
 //Generate Conditionals Quiz
 const conditionalsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Conditionals';
@@ -99,127 +73,37 @@ const functionsQuiz = allQuestions.filter(function(allQuestions) {
 const scopeQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Scope';
   });
-  //console.log(scopeQuiz);
+  console.log(scopeQuiz);
 
 //Generate Arrays Quiz
 const arraysQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Arrays';
   });
-  //console.log(arraysQuiz);
+  console.log(arraysQuiz);
   
 //Generate Loops Quiz
 const loopsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Loops';
   });
-  //console.log(loopsQuiz);
+  console.log(loopsQuiz);
 
 //Generate Iterators Quiz
 const iteratorsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Iterators';
   });
-  //console.log(iteratorsQuiz);
+  console.log(iteratorsQuiz);
 
 //Generate Objects Quiz
 const objectsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Objects';
   });
-  //console.log(objectsQuiz);
+  console.log(objectsQuiz);
 
 //Generate Classes Quiz
 const classesQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Classes';
   });
-  //console.log(classesQuiz);
-
-
-*/
-
-// Set question number to 0
-// var questionNumber = 0;
-
-// updateQuestion();
+  console.log(classesQuiz);
 
 
 
-// //When the first question is launched "nextQuestion" button is disabled 
-// nextQuestion.disabled = true;
-
-// //When pressing one of the options buttons
-// let checkAnswer = document.getElementsByClassName('option-buttons');
-
-// //When pressing "nextQuestion" button
-// nextQuestion.onclick = function (){
-//     questionNumber++; //Increment question number by one
-    
-//     if(questionNumber === allQuestions.length - 1) {
-//         updateQuestion();
-//         document.getElementById('endQuiz').style.display = "block";
-//         document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
-        
-//     } else {
-//     updateQuestion();
-//     }
-
-//     // Disable "nextQuestion" button
-//     nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
-//     endQuiz.disabled = true;
-    
-//     // Enable option buttons
-//     option1.disabled = false;
-//     option2.disabled = false;
-//     option3.disabled = false;
-
-//     // Reset feedback
-//     feedback.innerHTML = "";
-    
-//     // Reset colour of buttons
-//     option1.style.backgroundColor = "";
-//     option2.style.backgroundColor = "";
-//     option3.style.backgroundColor = "";
-//     option1.style.color = "";
-//     option2.style.color = "";
-//     option3.style.color = "";
-// };
-
-// //Score variable
-// let score = 0;
-
-// //When pressing one of the options buttons
-// //let checkAnswer = document.getElementsByClassName('option-buttons');
-// //element = 'option-buttons'
-
-// for (const element of checkAnswer){
-//     element.onclick = function (event) {
-        
-//             var response = event.target.innerHTML;
-//             if(response == allQuestions[questionNumber].answer){ //When options are selected, loop checks if correct answer
-//                 score++; //Increment score by 1
-//                 //highScore.innerHTML = "Highscore: " + score; //High score is displayed
-//                 feedback.innerHTML = "Correct!";
-//                 element.style.backgroundColor = "rgb(11, 145, 31)";
-//                 element.style.color = "white";
-//                 console.log(allQuestions[questionNumber].answer);
-//                 console.log(response);
-//                 console.log(score);
-                
-//               //activeUser.score = score
-//               //Save my activeUser back to localStorage
-
-//             } else {
-//                 feedback.innerHTML = "Incorrect!";
-//                 element.style.backgroundColor = "rgb(178, 21, 24)";
-//                 element.style.color = "white";
-//                 console.log(allQuestions[questionNumber].answer);
-//                 console.log(response);
-//                 // Change the color of the correct question to green, so that user knows which question is correct
-//                 // HOW???
-
-//             };
-//             endQuiz.disabled = false; //When clicked, function is run, "nextQuestion" button and "endQuiz" button are enabled
-//             nextQuestion.disabled = false; 
-//             option1.disabled = true; //When clicked, function is run, option buttons are disabled
-//             option2.disabled = true; 
-//             option3.disabled = true; 
-            
-//     };
-// }

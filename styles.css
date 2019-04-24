@@ -107,6 +107,7 @@ a:active {
   color: white;
 }
 
+
 .button-2 {
   height: 80px;
   width: 180px;
@@ -117,12 +118,14 @@ a:active {
   font-weight: 700;
   font-size: 20px;
   color: rgb(150, 150, 150);
+  margin: 15px;
 }
 
 .button-2:hover {
   background-color: rgb(11, 85, 221);
   color: white;
 }
+
 
 #nextQuestion {
   display: block;
@@ -226,11 +229,21 @@ a:active {
 
 .user-result {
   font-size: 130px;
-  margin: 150px auto 90px auto;
+  margin: 70px auto 70px auto;
+}
+
+.user-result #score {
+  font-size: 130px;
+  text-align: center;
+  float: none;
+}
+
+#final-score {
+  margin-top: 70px;
 }
 
 .user-result-text {
-  max-width: 600px;
+  max-width: 900px;
   margin-top: 0px;
   margin-bottom: 70px;
   margin-left: auto;
