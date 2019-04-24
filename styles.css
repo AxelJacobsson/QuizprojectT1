@@ -68,6 +68,20 @@ a:active {
   letter-spacing: 0.3em;
 }
 
+#progress {
+  float: left;
+  font-size: 16px;
+  margin-top: 80px;
+  margin-left: 80px;
+}
+
+#score {
+  float: right;
+  font-size: 16px;
+  margin-top: 80px;
+  margin-right: 80px;
+}
+
 
 /* BUTTONS */
 
@@ -202,8 +216,8 @@ a:active {
 #feedback {
   text-align: center;
   margin-top: 60px;
-  margin-bottom: 60px;
-  font-size: 25px;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 

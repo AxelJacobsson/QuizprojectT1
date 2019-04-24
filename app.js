@@ -48,10 +48,13 @@ var option1 = document.getElementById('option1');
 var option2 = document.getElementById('option2');
 var option3 = document.getElementById('option3');
 var feedback = document.getElementById('feedback');
+var showCorrectAnswer = document.getElementById('showCorrectAnswer');
 var highScore = document.getElementById('highScore');
 var nextQuestion = document.getElementById('nextQuestion');
 var endQuiz = document.getElementById('endQuiz');
-var totalQuestions = document.getElementById('totalQuestions')
+var totalQuestions = document.getElementById('totalQuestions');
+var userScore = document.getElementById('score');
+var progress = document.getElementById('progress');
 
 
 // Set question number to 0
@@ -110,28 +113,34 @@ for (const element of checkAnswer){
             var response = event.target.innerHTML;
             if(response == allQuestions[questionNumber].answer){ //When options are selected, loop checks if correct answer
                 score++; //Increment score by 1
-                //highScore.innerHTML = "Highscore: " + score; //High score is displayed
                 feedback.innerHTML = "Correct!";
                 element.style.backgroundColor = 'rgb(11, 85, 221)';
                 element.style.color = "white";
+                userScore.innerHTML = `Score: ${score}`;
                 
               activeUser.score = score
               saveUser(activeUser)
               //Save my activeUser back to localStorage
 
             } else {
-                feedback.innerHTML = "Incorrect!";
+                feedback.innerHTML = 'Incorrect!' ;
+                showCorrectAnswer.innerHTML = `The correct answer is '${allQuestions[questionNumber].answer}'`
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
-                // Change the color of the correct question to green, so that user knows which question is correct
-                // HOW???
-
+                
+                // This doesn't work
+                //allQuestions[questionNumber].answer.style.backgroundColor = "red";
+                
+                // Trying with a function
+                highlightCorrectAnswer()
             };
             
-            resetButtonsNewQuestion();
-            
+            resetButtonsNewQuestion();       
     };
 }
+
+
+
 
 
 

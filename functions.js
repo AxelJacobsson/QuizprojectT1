@@ -83,6 +83,7 @@ function enableOptionButtons() {
 
 function resetFeedback() {
     feedback.innerHTML = "";
+    showCorrectAnswer.innerHTML = "";
 };
 
 
@@ -90,9 +91,18 @@ function resetColorButtons() {
     option1.style.backgroundColor = "";
     option2.style.backgroundColor = "";
     option3.style.backgroundColor = "";
+    
     option1.style.color = "";
     option2.style.color = "";
     option3.style.color = "";
+
+    option1.style.borderWidth = "";
+    option2.style.borderWidth = "";
+    option3.style.borderWidth = "";
+
+    option1.style.borderColor = "";
+    option2.style.borderColor = "";
+    option3.style.borderColor = "";
 };
 
 
@@ -106,7 +116,15 @@ function resetButtonsNewQuestion() {
 };
 
 
-
+function highlightCorrectAnswer() {
+    const answer = document.querySelectorAll('.option-buttons')
+    for (let i = 0; i < answer.length; i++) {
+        if(answer[i].innerHTML == allQuestions[i].answer) {
+            answer[i].style.borderWidth = '5px'
+            answer[i].style.borderColor = 'rgb(11, 85, 221)'
+        }
+    }
+};
 
 
 
