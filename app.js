@@ -111,7 +111,7 @@ for (const element of checkAnswer){
                 //Save my activeUser back to localStorage
 
             } else {
-                feedback.innerHTML = 'Incorrect!' ;
+                feedback.innerHTML = 'Incorrect!';
                 showCorrectAnswer.innerHTML = `The correct answer is '${allQuestions[questionNumber].answer}'`
                 element.style.backgroundColor = "rgb(178, 21, 24)";
                 element.style.color = "white";
