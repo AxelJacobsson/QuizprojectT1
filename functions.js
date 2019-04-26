@@ -1,4 +1,19 @@
-// 1. LOCAL STORAGE
+//1. Shuffle questions for every quiz
+
+function shuffle(allQuestions) {
+    var currentIndex = allQuestions.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+  
+        temporaryValue = allQuestions[currentIndex];
+        allQuestions[currentIndex] = allQuestions[randomIndex];
+        allQuestions[randomIndex] = temporaryValue;
+    }
+    return allQuestions;
+  };
+
+// 2. LOCAL STORAGE for users
 
 //Get user from localStorage
 function getUsers() {
@@ -10,7 +25,7 @@ function saveUser(user) {
     return localStorage.setItem('activeUser', JSON.stringify(user))
 };
 
-// 2. WELCOME FLOW
+// 3. WELCOME FLOW
 
 // Initiates the user welcome flow where it reads the username and saves it to localStorage
 const welcomeFlow = function() {
@@ -34,7 +49,7 @@ const welcomeFlow = function() {
     })
 };
 
-// 3. INSTRUCTIONS FLOW
+// 4. INSTRUCTIONS FLOW
 
 function instructionsFlow() {
     document.getElementById('user-name').innerText = activeUser.firstname // Show user name
@@ -49,23 +64,13 @@ const startQuiz = function() {
 };
 
 
-// 4. QUIZ GAME
+// 5. QUIZ GAME
 
 function updateUI() {
     giveFeedback()
     pressNext()
     updateQuestion(); // Shows the first question of the quiz (index 0)
 }
-
-function updateQuestion() {
-    question.innerHTML = assessmentQuiz[questionNumber].question;
-    option1.innerHTML = assessmentQuiz[questionNumber].options[0];
-    option2.innerHTML = assessmentQuiz[questionNumber].options[1];
-    option3.innerHTML = assessmentQuiz[questionNumber].options[2];
-    updateProgress(questionNumber, assessmentQuiz.length)
-    nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
-    endQuiz.disabled = true;
-};
 
 function giveFeedback() {
     for (const element of checkAnswer){
@@ -123,21 +128,25 @@ function pressNext() {
     }
 };
 
-function displayViewResultsButton(){
-    document.getElementById('endQuiz').style.display = "block";
-    document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
-}
-
-
-function enableOptionButtons() {
-    option1.disabled = false;
-    option2.disabled = false;
-    option3.disabled = false;
+function updateQuestion() {
+    question.innerHTML = assessmentQuiz[questionNumber].question;
+    option1.innerHTML = assessmentQuiz[questionNumber].options[0];
+    option2.innerHTML = assessmentQuiz[questionNumber].options[1];
+    option3.innerHTML = assessmentQuiz[questionNumber].options[2];
+    updateProgress(questionNumber, assessmentQuiz.length)
+    nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
+    endQuiz.disabled = true;
 };
 
 function resetFeedback() {
     feedback.innerHTML = "";
     showCorrectAnswer.innerHTML = "";
+};
+
+function enableOptionButtons() {
+    option1.disabled = false;
+    option2.disabled = false;
+    option3.disabled = false;
 };
 
 function resetColorButtons() {
@@ -158,6 +167,10 @@ function resetColorButtons() {
     option3.style.borderColor = "";
 };
 
+function displayViewResultsButton(){
+    document.getElementById('endQuiz').style.display = "block";
+    document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
+};
 
 function resetButtonsNewQuestion() {
     endQuiz.disabled = false; //When clicked, function is run, "nextQuestion" button and "endQuiz" button are enabled
@@ -168,29 +181,15 @@ function resetButtonsNewQuestion() {
 
 };
 
+// 6. PROGRESS & RESULTS
+
+function updateProgress(currentQuestion,totalQuestions) {
+    document.getElementById('progress').innerText = `${currentQuestion + 1} / ${totalQuestions}`
+};
+
 function showResults() {
     document.getElementById('score').innerText = activeUser.score
     document.getElementById('quiz-length').innerText = assessmentQuiz.length
     document.getElementById('user-name').innerText = activeUser.firstname
-};
-
-
-//Shuffle questions for every quiz
-
-function shuffle(allQuestions) {
-    var currentIndex = allQuestions.length, temporaryValue, randomIndex;
-    while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-  
-        temporaryValue = allQuestions[currentIndex];
-        allQuestions[currentIndex] = allQuestions[randomIndex];
-        allQuestions[randomIndex] = temporaryValue;
-    }
-    return allQuestions;
-  };
-
-function updateProgress(currentQuestion,totalQuestions) {
-    document.getElementById('progress').innerText = `${currentQuestion + 1} / ${totalQuestions}`
 };
 
