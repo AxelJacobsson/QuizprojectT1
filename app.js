@@ -16,8 +16,8 @@ let currentQuestion = document.getElementById('currentQuestion');
 // Shuffle our array of questions
 shuffle(allQuestions);
 
-// Create new array with only 16 questions (right now its only 6 questions)
-const assessmentQuiz = allQuestions.slice(0, 6);
+// Create new array "assessmentQuiz" with only 16 questions (right now its only 6 questions)
+const assessmentQuiz = allQuestions.slice(0, 16);
 
 // Initial question number is set to index 0
 let questionNumber = 0;
