@@ -216,4 +216,4 @@ function showResults() {
     document.getElementById('failedCategory').innerText = category
 };
 
-
+//What happens if all the answers are correct?? FIX!
