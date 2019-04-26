@@ -56,8 +56,6 @@ updateQuestion(); // Shows the first question of the quiz (index 0)
 // Initial score is set to 0
 let score = 0;
 
-//When the first question is launched "nextQuestion" button is disabled 
-nextQuestion.disabled = true;
 
 //When pressing "nextQuestion" button
 nextQuestion.onclick = function (){
@@ -79,8 +77,6 @@ nextQuestion.onclick = function (){
 
     updateQuestion();
 
-    // Disable "nextQuestion" button
-    disableNextQuestion();
     
     // Enable option buttons
     enableOptionButtons();

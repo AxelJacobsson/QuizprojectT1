@@ -53,13 +53,8 @@ function updateQuestion() {
     option2.innerHTML = assessmentQuiz[questionNumber].options[1];
     option3.innerHTML = assessmentQuiz[questionNumber].options[2];
     updateProgress(questionNumber, assessmentQuiz.length)
-};
-
-
-function disableNextQuestion() {
     nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
     endQuiz.disabled = true;
-
 };
 
 
