@@ -39,7 +39,7 @@ const welcomeFlow = function() {
         }
 
         // New user is created from our User Class
-        const user = new User(tempUserName)
+        const user = new User(tempUserName, 0, null)
 
         // New user is saved to local storage
         localStorage.setItem('activeUser', JSON.stringify(user))
@@ -72,6 +72,7 @@ function updateUI() {
     updateQuestion(); // Shows the first question of the quiz (index 0)
 }
 
+let categoryFails = {} //the object that stores the fails for the category
 function giveFeedback() {
     for (const element of checkAnswer){
         element.onclick = function (event) {
@@ -84,9 +85,18 @@ function giveFeedback() {
                     element.style.color = "white";
                     userScore.innerHTML = `Score: ${score}`;
                     activeUser.score = score // Save score to activeUser
+                    activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
                     saveUser(activeUser) // Save activeUser to localStorage  
                 } else {
                     // User feedback
+                    //Need to give it a value
+                    if (!categoryFails[assessmentQuiz[questionNumber].category]) {
+                        categoryFails[assessmentQuiz[questionNumber].category] = 0   
+                    }
+                    categoryFails[assessmentQuiz[questionNumber].category]++;
+
+                    console.log(categoryFails)
+
                     feedback.innerHTML = 'Incorrect!';
                     showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
                     element.style.backgroundColor = "rgb(178, 21, 24)";
@@ -191,5 +201,19 @@ function showResults() {
     document.getElementById('score').innerText = activeUser.score
     document.getElementById('quiz-length').innerText = assessmentQuiz.length
     document.getElementById('user-name').innerText = activeUser.firstname
+ 
+    
+    let category;
+    let maxFails = 0;
+    for (let checkCategory of Object.keys(activeUser.failedCategory)) { //getting the keys from the object
+        console.log(checkCategory)
+        if (activeUser.failedCategory[checkCategory] > maxFails) {
+            category = checkCategory; //The category with the highest number of fails is stored to "category"
+            maxFails = activeUser.failedCategory[checkCategory] //Store the highest numbers of fails so far
+        }
+    }
+
+    document.getElementById('failedCategory').innerText = category
 };
+
 

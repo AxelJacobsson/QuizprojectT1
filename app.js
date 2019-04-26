@@ -13,6 +13,7 @@ let userScore = document.getElementById('score');
 let checkAnswer = document.getElementsByClassName('option-buttons');
 let currentQuestion = document.getElementById('currentQuestion');
 
+
 // Shuffle our array of questions
 shuffle(allQuestions);
 
