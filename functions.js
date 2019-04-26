@@ -45,6 +45,7 @@ function updateQuestion() {
     option1.innerHTML = assessmentQuiz[questionNumber].options[0];
     option2.innerHTML = assessmentQuiz[questionNumber].options[1];
     option3.innerHTML = assessmentQuiz[questionNumber].options[2];
+    updateProgress(questionNumber, assessmentQuiz.length)
 };
 
 
@@ -107,7 +108,7 @@ function highlightCorrectAnswer() {
 };
 */
 
-//Shuffle questions
+//Shuffle questions for every quiz
 
 function shuffle(allQuestions) {
     var currentIndex = allQuestions.length, temporaryValue, randomIndex;
@@ -121,3 +122,21 @@ function shuffle(allQuestions) {
     }
     return allQuestions;
   }
+
+function updateProgress(currentQuestion,totalQuestions) {
+    document.getElementById('progress').innerText = `${currentQuestion + 1} / ${totalQuestions}`
+
+}
+
+
+function updateUI(index, data) {
+
+    updateQuestion(index, data)
+    updateProgress(index, data.length)
+    updateScore()
+
+}
+
+function restartGame() {
+    
+}
