@@ -17,8 +17,9 @@ currentQuestion = 1;
 // Shuffle our array of questions
 shuffle(allQuestions);
 
-// Create new array with only 16 questions
+// Create new array with only 16 questions (right now its only 6 questions)
 const assessmentQuiz = allQuestions.slice(0, 6);
+
 
 //  APP Game Controller
 let activeUser = getUsers(); // What does this do exactly?
@@ -30,37 +31,33 @@ if (location.href.includes('index.html')) {
 
 // Get name from local storage and display on instructions page and start quiz
 else if (location.href.includes('instructions.html')) {
-    document.getElementById('user-name').innerText = activeUser.firstname  
-    startQuiz() // Redirect user to quiz when start button is clicked
+    instructionsFlow()
 }
 
 else if (location.href.includes('quiz.html')) {
-
-    
     // Check if there is a user in localstorage. If not, redirect to welcome screen (This does not seem to work???????????????????????????????????????????????
     if (getUsers() == null) {
         location.assign('index.html')
     } else {
-        // document.getElementById('quiz-length').innerText = assessmentQuiz.length
-        // document.getElementById('currentQuestion').innerText = 5; // Something is wrong here????????????????????????????????????????????????????
+        //launchQuiz() - Function not created yet - having issues..
+        giveFeedback()
     }
 }
 
 else if (location.href.includes('results.html')) {
-    document.getElementById('score').innerText = activeUser.score
-    document.getElementById('quiz-length').innerText = assessmentQuiz.length
-    document.getElementById('user-name').innerText = activeUser.firstname
+    showResults()
 }
 
-// Set question number to 0
+// Initial question number is set to index 0
 let questionNumber = 0;
+
 updateQuestion(); // Shows the first question of the quiz (index 0)
 
+// Initial score is set to 0
+let score = 0;
 
 //When the first question is launched "nextQuestion" button is disabled 
 nextQuestion.disabled = true;
-
-
 
 //When pressing "nextQuestion" button
 nextQuestion.onclick = function (){
@@ -96,29 +93,8 @@ nextQuestion.onclick = function (){
     }
 }
 
-//Score variable
-let score = 0;
-for (const element of checkAnswer){
-    element.onclick = function (event) {
-            let response = event.target.innerHTML;
-            if(response == assessmentQuiz[questionNumber].answer){ //When options are selected, loop checks if correct answer
-                score++; //Increment score by 1
-                // User feedback
-                feedback.innerHTML = "Correct!";
-                element.style.backgroundColor = 'rgb(11, 85, 221)';
-                element.style.color = "white";
-                userScore.innerHTML = `Score: ${score}`;
-                activeUser.score = score // Save score to activeUser
-                saveUser(activeUser) // Save activeUser to localStorage  
-            } else {
-                // User feedback
-                feedback.innerHTML = 'Incorrect!';
-                showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
-                element.style.backgroundColor = "rgb(178, 21, 24)";
-                element.style.color = "white";
-                //highlightCorrectAnswer()
-            };
-            resetButtonsNewQuestion(); // Resets all buttons for next question   
-    };
-}
+
+
+
+
 

@@ -30,12 +30,19 @@ const welcomeFlow = function() {
     })
 };
 
+// Instructions flow
+
+function instructionsFlow() {
+    document.getElementById('user-name').innerText = activeUser.firstname // Show user name
+    startQuiz() // Redirect user to quiz when start button is clicked
+};
+
 const startQuiz = function() {
     document.getElementById('start-quiz').addEventListener('click', (e) => {
         // User is directed to quiz
         location.assign('quiz.html')
     })
-}
+};
 
 
 // SECTION - QUIZ
@@ -108,6 +115,38 @@ function highlightCorrectAnswer() {
 };
 */
 
+function showResults() {
+    document.getElementById('score').innerText = activeUser.score
+    document.getElementById('quiz-length').innerText = assessmentQuiz.length
+    document.getElementById('user-name').innerText = activeUser.firstname
+}
+
+function giveFeedback() {
+    for (const element of checkAnswer){
+        element.onclick = function (event) {
+                let response = event.target.innerHTML;
+                if(response == assessmentQuiz[questionNumber].answer){ //When options are selected, loop checks if correct answer
+                    score++; //Increment score by 1
+                    // User feedback
+                    feedback.innerHTML = "Correct!";
+                    element.style.backgroundColor = 'rgb(11, 85, 221)';
+                    element.style.color = "white";
+                    userScore.innerHTML = `Score: ${score}`;
+                    activeUser.score = score // Save score to activeUser
+                    saveUser(activeUser) // Save activeUser to localStorage  
+                } else {
+                    // User feedback
+                    feedback.innerHTML = 'Incorrect!';
+                    showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
+                    element.style.backgroundColor = "rgb(178, 21, 24)";
+                    element.style.color = "white";
+                    //highlightCorrectAnswer()
+                };
+                resetButtonsNewQuestion(); // Resets all buttons for next question   
+        };
+    }
+};
+
 //Shuffle questions for every quiz
 
 function shuffle(allQuestions) {
@@ -125,18 +164,11 @@ function shuffle(allQuestions) {
 
 function updateProgress(currentQuestion,totalQuestions) {
     document.getElementById('progress').innerText = `${currentQuestion + 1} / ${totalQuestions}`
-
 }
 
 
 function updateUI(index, data) {
-
     updateQuestion(index, data)
     updateProgress(index, data.length)
     updateScore()
-
-}
-
-function restartGame() {
-    
 }
