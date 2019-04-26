@@ -12,7 +12,6 @@ let totalQuestions = document.getElementById('totalQuestions');
 let userScore = document.getElementById('score');
 let checkAnswer = document.getElementsByClassName('option-buttons');
 let currentQuestion = document.getElementById('currentQuestion');
-currentQuestion = 1;
 
 // Shuffle our array of questions
 shuffle(allQuestions);
@@ -20,8 +19,16 @@ shuffle(allQuestions);
 // Create new array with only 16 questions (right now its only 6 questions)
 const assessmentQuiz = allQuestions.slice(0, 6);
 
+// Initial question number is set to index 0
+let questionNumber = 0;
 
-//  APP Game Controller
+// Initial score is set to 0
+let score = 0;
+
+
+
+//  APP GAME CONTROLLER
+
 let activeUser = getUsers(); // What does this do exactly?
 
 // Run welcome flow if user is on index.html
@@ -39,58 +46,10 @@ else if (location.href.includes('quiz.html')) {
     if (getUsers() == null) {
         location.assign('index.html')
     } else {
-        //launchQuiz() - Function not created yet - having issues..
-        giveFeedback()
+        updateUI()
     }
 }
 
 else if (location.href.includes('results.html')) {
     showResults()
 }
-
-// Initial question number is set to index 0
-let questionNumber = 0;
-
-updateQuestion(); // Shows the first question of the quiz (index 0)
-
-// Initial score is set to 0
-let score = 0;
-
-
-//When pressing "nextQuestion" button
-nextQuestion.onclick = function (){
-    questionNumber++; //Increment question number by 1
-    console.log(questionNumber)
-    currentQuestion++; //Used for the display of the question count
-    
-    if(questionNumber === assessmentQuiz.length - 1) {
-
-        updateQuestion();
-        resetFeedback();
-        resetColorButtons();
-        enableOptionButtons();
-        document.getElementById('endQuiz').style.display = "block";
-        document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
-        
-    } else {
-    //Update question
-
-    updateQuestion();
-
-    
-    // Enable option buttons
-    enableOptionButtons();
-
-    // Reset feedback
-    resetFeedback();
-    
-    // Reset colour of buttons
-    resetColorButtons();
-    }
-}
-
-
-
-
-
-

@@ -1,3 +1,5 @@
+// 1. LOCAL STORAGE
+
 //Get user from localStorage
 function getUsers() {
     return JSON.parse(localStorage.getItem('activeUser'))
@@ -7,6 +9,8 @@ function getUsers() {
 function saveUser(user) {
     return localStorage.setItem('activeUser', JSON.stringify(user))
 };
+
+// 2. WELCOME FLOW
 
 // Initiates the user welcome flow where it reads the username and saves it to localStorage
 const welcomeFlow = function() {
@@ -30,7 +34,7 @@ const welcomeFlow = function() {
     })
 };
 
-// Instructions flow
+// 3. INSTRUCTIONS FLOW
 
 function instructionsFlow() {
     document.getElementById('user-name').innerText = activeUser.firstname // Show user name
@@ -45,7 +49,13 @@ const startQuiz = function() {
 };
 
 
-// SECTION - QUIZ
+// 4. QUIZ GAME
+
+function updateUI() {
+    giveFeedback()
+    pressNext()
+    updateQuestion(); // Shows the first question of the quiz (index 0)
+}
 
 function updateQuestion() {
     question.innerHTML = assessmentQuiz[questionNumber].question;
@@ -56,6 +66,67 @@ function updateQuestion() {
     nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
     endQuiz.disabled = true;
 };
+
+function giveFeedback() {
+    for (const element of checkAnswer){
+        element.onclick = function (event) {
+                let response = event.target.innerHTML;
+                if(response == assessmentQuiz[questionNumber].answer){ //When options are selected, loop checks if correct answer
+                    score++; //Increment score by 1
+                    // User feedback
+                    feedback.innerHTML = "Correct!";
+                    element.style.backgroundColor = 'rgb(11, 85, 221)';
+                    element.style.color = "white";
+                    userScore.innerHTML = `Score: ${score}`;
+                    activeUser.score = score // Save score to activeUser
+                    saveUser(activeUser) // Save activeUser to localStorage  
+                } else {
+                    // User feedback
+                    feedback.innerHTML = 'Incorrect!';
+                    showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
+                    element.style.backgroundColor = "rgb(178, 21, 24)";
+                    element.style.color = "white";
+                    //highlightCorrectAnswer()
+                };
+                resetButtonsNewQuestion(); // Resets all buttons for next question   
+        };
+    }
+};
+
+function pressNext() {
+    //When pressing "nextQuestion" button
+    nextQuestion.onclick = function (){
+        questionNumber++; //Increment question number by 1
+        currentQuestion++; //Used for the display of the question count
+    
+        if(questionNumber === assessmentQuiz.length - 1) {
+            // Update question
+            updateQuestion();
+            // Reset feedback
+            resetFeedback();
+            // Enable option buttons
+            enableOptionButtons();
+            // Reset colour of buttons
+            resetColorButtons();
+            // Display 'View Results' button on last question
+            displayViewResultsButton()
+        } else {
+            // Update question
+            updateQuestion();
+            // Reset feedback
+            resetFeedback();
+            // Enable option buttons
+            enableOptionButtons();
+            // Reset colour of buttons
+            resetColorButtons();
+        }
+    }
+};
+
+function displayViewResultsButton(){
+    document.getElementById('endQuiz').style.display = "block";
+    document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
+}
 
 
 function enableOptionButtons() {
@@ -68,7 +139,6 @@ function resetFeedback() {
     feedback.innerHTML = "";
     showCorrectAnswer.innerHTML = "";
 };
-
 
 function resetColorButtons() {
     option1.style.backgroundColor = "";
@@ -98,49 +168,12 @@ function resetButtonsNewQuestion() {
 
 };
 
-/*
-function highlightCorrectAnswer() {
-    const answer = document.querySelectorAll('.option-buttons')
-    for (let i = 0; i < answer.length; i++) {
-        if(answer[i].innerHTML == assessmentQuiz[i].answer) {
-            answer[i].style.borderWidth = "5px"
-            answer[i].style.borderColor = "rgb(11, 85, 221)"
-        }
-    }
-};
-*/
-
 function showResults() {
     document.getElementById('score').innerText = activeUser.score
     document.getElementById('quiz-length').innerText = assessmentQuiz.length
     document.getElementById('user-name').innerText = activeUser.firstname
-}
-
-function giveFeedback() {
-    for (const element of checkAnswer){
-        element.onclick = function (event) {
-                let response = event.target.innerHTML;
-                if(response == assessmentQuiz[questionNumber].answer){ //When options are selected, loop checks if correct answer
-                    score++; //Increment score by 1
-                    // User feedback
-                    feedback.innerHTML = "Correct!";
-                    element.style.backgroundColor = 'rgb(11, 85, 221)';
-                    element.style.color = "white";
-                    userScore.innerHTML = `Score: ${score}`;
-                    activeUser.score = score // Save score to activeUser
-                    saveUser(activeUser) // Save activeUser to localStorage  
-                } else {
-                    // User feedback
-                    feedback.innerHTML = 'Incorrect!';
-                    showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
-                    element.style.backgroundColor = "rgb(178, 21, 24)";
-                    element.style.color = "white";
-                    //highlightCorrectAnswer()
-                };
-                resetButtonsNewQuestion(); // Resets all buttons for next question   
-        };
-    }
 };
+
 
 //Shuffle questions for every quiz
 
@@ -155,15 +188,9 @@ function shuffle(allQuestions) {
         allQuestions[randomIndex] = temporaryValue;
     }
     return allQuestions;
-  }
+  };
 
 function updateProgress(currentQuestion,totalQuestions) {
     document.getElementById('progress').innerText = `${currentQuestion + 1} / ${totalQuestions}`
-}
+};
 
-
-function updateUI(index, data) {
-    updateQuestion(index, data)
-    updateProgress(index, data.length)
-    updateScore()
-}
