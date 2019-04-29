@@ -31,7 +31,7 @@ function saveUser(user) {
 const welcomeFlow = function() {
     const users = getUsers()
     //When clicking submit, a new user is created and stored to localStorage
-    document.getElementById('submit').addEventListener('click', (e) => {
+    document.getElementById('submit').addEventListener('click', (e) => {  // there seems to be a problem here. 'e' is never called?
         const tempUserName = document.getElementById('type-name').value
    
         if(tempUserName.length === 0) {
@@ -56,7 +56,7 @@ function instructionsFlow() {
     startQuiz() // Redirect user to quiz when start button is clicked
 };
 
-const startQuiz = function() {
+function startQuiz() {
     document.getElementById('start-quiz').addEventListener('click', (e) => {
         // User is directed to quiz
         location.assign('quiz.html')
@@ -67,8 +67,8 @@ const startQuiz = function() {
 // 5. QUIZ GAME
 
 function updateUI() {
-    giveFeedback()
-    pressNext()
+    giveFeedback() // Provides feedback to the user
+    pressNext() // Initialises new question
     updateQuestion(); // Shows the first question of the quiz (index 0)
 }
 
@@ -109,10 +109,9 @@ function giveFeedback() {
 };
 
 function pressNext() {
-    //When pressing "nextQuestion" button
+    //When pressing 'next' button
     nextQuestion.onclick = function (){
         questionNumber++; //Increment question number by 1
-        currentQuestion++; //Used for the display of the question count
     
         if(questionNumber === assessmentQuiz.length - 1) {
             // Update question
@@ -144,58 +143,51 @@ function updateQuestion() {
     option2.innerHTML = assessmentQuiz[questionNumber].options[1];
     option3.innerHTML = assessmentQuiz[questionNumber].options[2];
     updateProgress(questionNumber, assessmentQuiz.length)
-    nextQuestion.disabled = true; //When function is run, "nextQuestion" button and "endQuiz" button are disabled
-    endQuiz.disabled = true;
+    nextQuestion.disabled = true; // 'Next' button is disabled
+    endQuiz.disabled = true; // 'View results' button is disabled
 };
 
-function resetFeedback() {
+function resetFeedback() { // Feedback is reset
     feedback.innerHTML = "";
     showCorrectAnswer.innerHTML = "";
 };
 
-function enableOptionButtons() {
+function enableOptionButtons() { // Option buttons are enabled
     option1.disabled = false;
     option2.disabled = false;
     option3.disabled = false;
 };
 
-function resetColorButtons() {
+function resetColorButtons() { // Colour of buttons is reset
     option1.style.backgroundColor = "";
     option2.style.backgroundColor = "";
     option3.style.backgroundColor = "";
-    
     option1.style.color = "";
     option2.style.color = "";
     option3.style.color = "";
-
-    option1.style.borderWidth = "";
-    option2.style.borderWidth = "";
-    option3.style.borderWidth = "";
-
-    option1.style.borderColor = "";
-    option2.style.borderColor = "";
-    option3.style.borderColor = "";
 };
 
-function displayViewResultsButton(){
-    document.getElementById('endQuiz').style.display = "block";
-    document.getElementById('nextQuestion').style.display= "none"; //If second last question is reached, hide "nextQuestion" button display "endQuiz" button
-};
-
-function resetButtonsNewQuestion() {
-    endQuiz.disabled = false; //When clicked, function is run, "nextQuestion" button and "endQuiz" button are enabled
+function resetButtonsNewQuestion() { // Enable / disable buttons whenever new question is initialised
+    endQuiz.disabled = false;
     nextQuestion.disabled = false; 
-    option1.disabled = true; //When clicked, function is run, option buttons are disabled
+    option1.disabled = true;
     option2.disabled = true; 
     option3.disabled = true; 
-
 };
 
-// 6. PROGRESS & RESULTS
+function displayViewResultsButton() { // Show 'View results' (also called 'endQuiz') button and hide 'Next' button on final question
+    document.getElementById('endQuiz').style.display = "block";
+    document.getElementById('nextQuestion').style.display= "none"; 
+};
+
+
+// 6. PROGRESS
 
 function updateProgress(currentQuestion,totalQuestions) {
     document.getElementById('progress').innerText = `${currentQuestion + 1} / ${totalQuestions}`
 };
+
+// 7. RESULTS
 
 function showResults() {
     document.getElementById('score').innerText = activeUser.score

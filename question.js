@@ -11,7 +11,7 @@ class Question {
 };
 
 
-//Array with all questions
+// Array with all questions
 
 const allQuestions = [
     
@@ -57,54 +57,42 @@ const allQuestions = [
 ]; 
 
 
-
 //Generate Conditionals Quiz
 const conditionalsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Conditionals';
   });
-  console.log(conditionalsQuiz);
 
 //Generate Functions Quiz
 const functionsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Functions';
   });
-  console.log(functionsQuiz);
 
 //Generate Scope Quiz
 const scopeQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Scope';
   });
-  console.log(scopeQuiz);
 
 //Generate Arrays Quiz
 const arraysQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Arrays';
   });
-  console.log(arraysQuiz);
   
 //Generate Loops Quiz
 const loopsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Loops';
   });
-  console.log(loopsQuiz);
 
 //Generate Iterators Quiz
 const iteratorsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Iterators';
   });
-  console.log(iteratorsQuiz);
 
 //Generate Objects Quiz
 const objectsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Objects';
   });
-  console.log(objectsQuiz);
 
 //Generate Classes Quiz
 const classesQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Classes';
   });
-  console.log(classesQuiz);
-
-
-
