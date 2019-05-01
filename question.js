@@ -10,7 +10,6 @@ class Question {
   }
 };
 
-
 // Array with all questions
 
 const allQuestions = [
@@ -55,7 +54,6 @@ const allQuestions = [
     new Question('Classes', 'What is the purpose of the super keyword?', ['The super keyword automatically create getters and setters for all properties.', 'The super keyword is used in subclasses to call a parent constructor().', 'The super keyword is called in a parent class to access the properties in all subclasses.'], 'The super keyword is used in subclasses to call a parent constructor().'),
     new Question('Classes', 'What is the purpose of the constructor() method?', ['Each property has a constructor() method. It is called whenever you try to set or get the property.', 'Subclasses inherit the constructor() from the parent class to set property values for the child class.', 'The constructor() is called when you create a new instance of a class. It sets the property values for each instance.'], 'The constructor() is called when you create a new instance of a class. It sets the property values for each instance.')
 ]; 
-
 
 // Generate Conditionals Quiz
 const conditionalsQuiz = allQuestions.filter(function(allQuestions) {

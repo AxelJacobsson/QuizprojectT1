@@ -196,11 +196,11 @@ function showResults() {
     
     let category;
     let maxFails = 0;
-    for (let checkCategory of Object.keys(activeUser.failedCategory)) { //getting the keys from the object
-        console.log(checkCategory)
+    for (let checkCategory of Object.keys(activeUser.failedCategory)) { // Get the keys from the object
+        //console.log(checkCategory)
         if (activeUser.failedCategory[checkCategory] > maxFails) {
             category = checkCategory; //The category with the highest number of fails is stored to "category"
-            maxFails = activeUser.failedCategory[checkCategory] //Store the highest numbers of fails so far
+            maxFails = activeUser.failedCategory[checkCategory] // Store the highest numbers of fails so far
         }
     }
 
