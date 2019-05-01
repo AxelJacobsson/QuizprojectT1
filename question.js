@@ -57,42 +57,42 @@ const allQuestions = [
 ]; 
 
 
-//Generate Conditionals Quiz
+// Generate Conditionals Quiz
 const conditionalsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Conditionals';
   });
 
-//Generate Functions Quiz
+// Generate Functions Quiz
 const functionsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Functions';
   });
 
-//Generate Scope Quiz
+// Generate Scope Quiz
 const scopeQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Scope';
   });
 
-//Generate Arrays Quiz
+// Generate Arrays Quiz
 const arraysQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Arrays';
   });
   
-//Generate Loops Quiz
+// Generate Loops Quiz
 const loopsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Loops';
   });
 
-//Generate Iterators Quiz
+// Generate Iterators Quiz
 const iteratorsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Iterators';
   });
 
-//Generate Objects Quiz
+// Generate Objects Quiz
 const objectsQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Objects';
   });
 
-//Generate Classes Quiz
+// Generate Classes Quiz
 const classesQuiz = allQuestions.filter(function(allQuestions) {
     return allQuestions.category === 'Classes';
   });

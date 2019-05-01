@@ -1,4 +1,4 @@
-//1. Shuffle questions for every quiz
+//1. Shuffle questions in each new quiz
 
 function shuffle(allQuestions) {
     var currentIndex = allQuestions.length, temporaryValue, randomIndex;
@@ -38,7 +38,7 @@ const welcomeFlow = function() {
             return false
         }
 
-        // New user is created from our User Class
+        // New user is created from User Class
         const user = new User(tempUserName, 0, null)
 
         // New user is saved to local storage
@@ -101,7 +101,6 @@ function giveFeedback() {
                     showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
                     element.style.backgroundColor = "rgb(178, 21, 24)";
                     element.style.color = "white";
-                    //highlightCorrectAnswer()
                 };
                 resetButtonsNewQuestion(); // Resets all buttons for next question   
         };
