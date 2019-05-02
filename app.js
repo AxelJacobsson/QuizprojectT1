@@ -1,26 +1,15 @@
-// Import HTML elements
-let question = document.getElementById('question');
-let option1 = document.getElementById('option1');
-let option2 = document.getElementById('option2');
-let option3 = document.getElementById('option3');
-let feedback = document.getElementById('feedback');
-let showCorrectAnswer = document.getElementById('showCorrectAnswer');
-let highScore = document.getElementById('highScore');
-let nextQuestion = document.getElementById('nextQuestion');
-let endQuiz = document.getElementById('endQuiz');
-let totalQuestions = document.getElementById('totalQuestions');
-let userScore = document.getElementById('score');
-let checkAnswer = document.getElementsByClassName('option-buttons');
-let currentQuestion = document.getElementById('currentQuestion');
-let userName = document.getElementById('user-name');
-let quizLength = document.getElementById('quiz-length');
-
+// *** GENERATE NEW QUIZ ***
 
 // Shuffle our array of questions
 shuffle(allQuestions);
 
 // Create new array "assessmentQuiz" with only 16 questions (right now its only 6 questions)
-const assessmentQuiz = allQuestions.slice(0, 20);
+const assessmentQuiz = allQuestions.slice(0, 10);
+
+
+
+
+// *** SET INITIAL VALUES TO 0 ***
 
 // Initial question number is set to index 0
 let questionNumber = 0;
@@ -30,9 +19,10 @@ let score = 0;
 
 
 
-//  ***APP GAME CONTROLLER***
 
-let activeUser = getUsers(); // What does this do exactly?
+//  *** APP GAME CONTROLLER ***
+
+let activeUser = getUsers(); // Import user from local storage
 
 // Run welcome flow if user is on index.html
 if (location.href.includes('index.html')) {
@@ -45,12 +35,13 @@ else if (location.href.includes('instructions.html')) {
 }
 
 else if (location.href.includes('quiz.html')) {
-    // Check if there is a user in localstorage. If not, redirect to welcome screen (This does not seem to work???????????????????????????????????????????????
+    // Check if there is a user in local storage. If not, redirect to welcome screen (This does not seem to work???????????????????????????????????????????????
     if (getUsers() == null) {
         location.assign('index.html')
     } else {
         updateUI()
     }
+    console.log(activeUser)
 }
 
 else if (location.href.includes('results.html')) {

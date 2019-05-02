@@ -241,7 +241,7 @@ a:active {
   margin-top: 70px;
 }
 
-.user-result-text {
+#result-text {
   max-width: 900px;
   margin-top: 0px;
   margin-bottom: 70px;

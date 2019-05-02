@@ -1,3 +1,23 @@
+// Import HTML elements
+let question = document.getElementById('question');
+let option1 = document.getElementById('option1');
+let option2 = document.getElementById('option2');
+let option3 = document.getElementById('option3');
+let feedback = document.getElementById('feedback');
+let showCorrectAnswer = document.getElementById('showCorrectAnswer');
+let highScore = document.getElementById('highScore');
+let totalQuestions = document.getElementById('totalQuestions');
+let userScore = document.getElementById('score');
+let checkAnswer = document.getElementsByClassName('option-buttons');
+let currentQuestion = document.getElementById('currentQuestion');
+let userName = document.getElementById('user-name');
+let quizLength = document.getElementById('quiz-length');
+let resultText = document.getElementById('result-text');
+let progress = document.getElementById('progress');
+let viewResultButton = document.getElementById('endQuiz');
+let nextQuestionButton = document.getElementById('nextQuestion');
+
+
 //1. Shuffle questions in each new quiz
 
 function shuffle(allQuestions) {
@@ -5,13 +25,13 @@ function shuffle(allQuestions) {
     while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-  
         temporaryValue = allQuestions[currentIndex];
         allQuestions[currentIndex] = allQuestions[randomIndex];
         allQuestions[randomIndex] = temporaryValue;
     }
     return allQuestions;
   };
+
 
 // 2. LOCAL STORAGE for users
 
@@ -25,11 +45,12 @@ function saveUser(user) {
     return localStorage.setItem('activeUser', JSON.stringify(user))
 };
 
+
 // 3. WELCOME FLOW
 
-// Initiates the user welcome flow where it reads the username and saves it to localStorage
+// Initiates the user welcome flow where it reads the username and saves it to local storage
 const welcomeFlow = function() {
-    const users = getUsers()
+    //const users = getUsers() // What does this do??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
     //When clicking submit, a new user is created and stored to localStorage
     document.getElementById('submit').addEventListener('click', (e) => {  // there seems to be a problem here. 'e' is never called?
         const tempUserName = document.getElementById('type-name').value
@@ -49,10 +70,11 @@ const welcomeFlow = function() {
     })
 };
 
+
 // 4. INSTRUCTIONS FLOW
 
 function instructionsFlow() {
-    document.getElementById('user-name').innerText = activeUser.firstname // Show user name
+    userName.innerText = activeUser.firstname // Show user name
     startQuiz() // Redirect user to quiz when start button is clicked
 };
 
@@ -64,7 +86,7 @@ function startQuiz() {
 };
 
 
-// 5. QUIZ GAME
+// 5. QUIZ GAME FLOW
 
 function updateUI() {
     giveFeedback() // Provides feedback to the user
@@ -86,16 +108,15 @@ function giveFeedback() {
                     userScore.innerHTML = `Score: ${score}`;
                     activeUser.score = score // Save score to activeUser
                     activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
-                    saveUser(activeUser) // Save activeUser to localStorage  
+                    saveUser(activeUser) // Save activeUser to local storage  
                 } else {
                     // User feedback
                     //Need to give it a value
                     if (!categoryFails[assessmentQuiz[questionNumber].category]) {
                         categoryFails[assessmentQuiz[questionNumber].category] = 0   
                     }
-                    categoryFails[assessmentQuiz[questionNumber].category]++;
 
-                    console.log(categoryFails)
+                    categoryFails[assessmentQuiz[questionNumber].category]++;
 
                     feedback.innerHTML = 'Incorrect!';
                     showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
@@ -175,36 +196,45 @@ function resetButtonsNewQuestion() { // Enable / disable buttons whenever new qu
 };
 
 function displayViewResultsButton() { // Show 'View results' (also called 'endQuiz') button and hide 'Next' button on final question
-    document.getElementById('endQuiz').style.display = "block";
-    document.getElementById('nextQuestion').style.display= "none"; 
+    viewResultButton.style.display = "block";
+    nextQuestionButton.style.display= "none"; 
 };
 
 
 // 6. PROGRESS
 
 function updateProgress(currentQuestion,totalQuestions) {
-    document.getElementById('progress').innerText = `${currentQuestion + 1} / ${totalQuestions}`
+    progress.innerText = `${currentQuestion + 1} / ${totalQuestions}`
 };
 
-// 7. RESULTS
+
+// 7. RESULTS FLOW
 
 function showResults() {
     userScore.innerText = activeUser.score
     quizLength.innerText = assessmentQuiz.length
-    userName.innerText = activeUser.firstname
- 
     
     let category;
     let maxFails = 0;
     for (let checkCategory of Object.keys(activeUser.failedCategory)) { // Get the keys from the object
-        //console.log(checkCategory)
-        if (activeUser.failedCategory[checkCategory] > maxFails) {
+         if (activeUser.failedCategory[checkCategory] > maxFails) {
             category = checkCategory; // The category with the highest number of fails is stored to "category"
             maxFails = activeUser.failedCategory[checkCategory] // Store the highest numbers of fails so far
+            resultText.innerHTML = `Well done ${activeUser.firstname}! Based on your answers, it looks like you need to study ${category}.`;
         }
     }
 
-    document.getElementById('failedCategory').innerText = category
-};
+    function allAnswersCorrect() {
+        if (activeUser.score == assessmentQuiz.length) {
+            resultText.innerHTML = `Well done ${activeUser.firstname}! You answered all questions correctly!`;
+        }
+    };
+    allAnswersCorrect();  
 
-//What happens if all the answers are correct?? FIX!
+    function allAnswersIncorrect() {
+        if (activeUser.score == 0) {
+            resultText.innerHTML = `${activeUser.firstname}... You need to pull your act together.`;
+        }
+    }
+    allAnswersIncorrect();
+};
