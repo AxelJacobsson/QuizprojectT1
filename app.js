@@ -12,13 +12,15 @@ let totalQuestions = document.getElementById('totalQuestions');
 let userScore = document.getElementById('score');
 let checkAnswer = document.getElementsByClassName('option-buttons');
 let currentQuestion = document.getElementById('currentQuestion');
+let userName = document.getElementById('user-name');
+let quizLength = document.getElementById('quiz-length');
 
 
 // Shuffle our array of questions
 shuffle(allQuestions);
 
 // Create new array "assessmentQuiz" with only 16 questions (right now its only 6 questions)
-const assessmentQuiz = allQuestions.slice(0, 5);
+const assessmentQuiz = allQuestions.slice(0, 20);
 
 // Initial question number is set to index 0
 let questionNumber = 0;

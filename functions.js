@@ -189,9 +189,9 @@ function updateProgress(currentQuestion,totalQuestions) {
 // 7. RESULTS
 
 function showResults() {
-    document.getElementById('score').innerText = activeUser.score
-    document.getElementById('quiz-length').innerText = assessmentQuiz.length
-    document.getElementById('user-name').innerText = activeUser.firstname
+    userScore.innerText = activeUser.score
+    quizLength.innerText = assessmentQuiz.length
+    userName.innerText = activeUser.firstname
  
     
     let category;
@@ -199,7 +199,7 @@ function showResults() {
     for (let checkCategory of Object.keys(activeUser.failedCategory)) { // Get the keys from the object
         //console.log(checkCategory)
         if (activeUser.failedCategory[checkCategory] > maxFails) {
-            category = checkCategory; //The category with the highest number of fails is stored to "category"
+            category = checkCategory; // The category with the highest number of fails is stored to "category"
             maxFails = activeUser.failedCategory[checkCategory] // Store the highest numbers of fails so far
         }
     }
