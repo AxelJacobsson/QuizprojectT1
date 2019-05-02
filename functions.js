@@ -111,7 +111,7 @@ function giveFeedback() {
                     saveUser(activeUser) // Save activeUser to local storage  
                 } else {
                     // User feedback
-                    //Need to give it a value
+                    // Need to give it a value
                     if (!categoryFails[assessmentQuiz[questionNumber].category]) {
                         categoryFails[assessmentQuiz[questionNumber].category] = 0   
                     }
@@ -129,7 +129,7 @@ function giveFeedback() {
 };
 
 function pressNext() {
-    //When pressing 'next' button
+    // When pressing 'next' button
     nextQuestion.onclick = function (){
         questionNumber++; //Increment question number by 1
     
