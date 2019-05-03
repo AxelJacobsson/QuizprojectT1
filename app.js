@@ -41,7 +41,6 @@ else if (location.href.includes('quiz.html')) {
     } else {
         updateUI()
     }
-    console.log(activeUser)
 }
 
 else if (location.href.includes('results.html')) {
