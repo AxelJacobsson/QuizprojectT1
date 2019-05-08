@@ -1,8 +1,14 @@
-// Import HTML elements
-let submitName = document.getElementById('submit');
-let startQuizButton = document.getElementById('start-quiz');
-let userNameInput = document.getElementById('type-name');
+// Import HTML elements and save to variable
 
+// index.html
+let userNameInput = document.getElementById('type-name');
+let submitName = document.getElementById('submit');
+
+// instructions.html
+let userName = document.getElementById('user-name');
+let startQuizButton = document.getElementById('start-quiz');
+
+// quiz.html
 let question = document.getElementById('question');
 let checkAnswer = document.getElementsByClassName('option-buttons');
 let option1 = document.getElementById('option1');
@@ -12,21 +18,20 @@ let feedback = document.getElementById('feedback');
 let showCorrectAnswer = document.getElementById('showCorrectAnswer');
 let nextQuestionButton = document.getElementById('nextQuestion');
 let viewResultButton = document.getElementById('endQuiz');
-
 let currentQuestion = document.getElementById('currentQuestion');
 let highScore = document.getElementById('highScore');
 let totalQuestions = document.getElementById('totalQuestions');
 let userScore = document.getElementById('score');
-let userName = document.getElementById('user-name');
 let quizLength = document.getElementById('quiz-length');
 let progress = document.getElementById('progress');
 
+// results.html
 let resultText = document.getElementById('result-text');
 let readMoreButton = document.getElementById('read-more');
 
 
 
-//1. Shuffle questions in each new quiz
+//1. Shuffle questions
 
 function shuffle(allQuestions) {
     var currentIndex = allQuestions.length, temporaryValue, randomIndex;
