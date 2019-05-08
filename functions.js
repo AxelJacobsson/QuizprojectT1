@@ -1,21 +1,28 @@
 // Import HTML elements
+let submitName = document.getElementById('submit');
+let startQuizButton = document.getElementById('start-quiz');
+
 let question = document.getElementById('question');
+let checkAnswer = document.getElementsByClassName('option-buttons');
 let option1 = document.getElementById('option1');
 let option2 = document.getElementById('option2');
 let option3 = document.getElementById('option3');
 let feedback = document.getElementById('feedback');
 let showCorrectAnswer = document.getElementById('showCorrectAnswer');
+let nextQuestionButton = document.getElementById('nextQuestion');
+let viewResultButton = document.getElementById('endQuiz');
+
+let currentQuestion = document.getElementById('currentQuestion');
 let highScore = document.getElementById('highScore');
 let totalQuestions = document.getElementById('totalQuestions');
 let userScore = document.getElementById('score');
-let checkAnswer = document.getElementsByClassName('option-buttons');
-let currentQuestion = document.getElementById('currentQuestion');
 let userName = document.getElementById('user-name');
 let quizLength = document.getElementById('quiz-length');
-let resultText = document.getElementById('result-text');
 let progress = document.getElementById('progress');
-let viewResultButton = document.getElementById('endQuiz');
-let nextQuestionButton = document.getElementById('nextQuestion');
+
+let resultText = document.getElementById('result-text');
+let readMoreButton = document.getElementById('read-more');
+
 
 
 //1. Shuffle questions in each new quiz
@@ -52,7 +59,7 @@ function saveUser(user) {
 const welcomeFlow = function() {
     //const users = getUsers() // What does this do??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
     //When clicking submit, a new user is created and stored to localStorage
-    document.getElementById('submit').addEventListener('click', (e) => {  // there seems to be a problem here. 'e' is never called?
+    submitName.addEventListener('click', (e) => {  // there seems to be a problem here. 'e' is never called?
         const tempUserName = document.getElementById('type-name').value
    
         if(tempUserName.length === 0) {
@@ -79,7 +86,7 @@ function instructionsFlow() {
 };
 
 function startQuiz() {
-    document.getElementById('start-quiz').addEventListener('click', (e) => {
+    startQuizButton.addEventListener('click', (e) => {
         // User is directed to quiz
         location.assign('quiz.html')
     })
@@ -132,30 +139,25 @@ function pressNext() {
     // When pressing 'next' button
     nextQuestion.onclick = function (){
         questionNumber++; //Increment question number by 1
-    
         if(questionNumber === assessmentQuiz.length - 1) {
-            // Update question
-            updateQuestion();
-            // Reset feedback
-            resetFeedback();
-            // Enable option buttons
-            enableOptionButtons();
-            // Reset colour of buttons
-            resetColorButtons();
-            // Display 'View Results' button on last question
-            displayViewResultsButton()
+            resetUI(); // Updates question, and resets buttons and feedback
+            displayViewResultsButton(); // Display 'View Results' button on last question
         } else {
-            // Update question
-            updateQuestion();
-            // Reset feedback
-            resetFeedback();
-            // Enable option buttons
-            enableOptionButtons();
-            // Reset colour of buttons
-            resetColorButtons();
+            resetUI(); // Updates question, and resets buttons and feedback
         }
     }
 };
+
+function resetUI() {
+    // Update question
+    updateQuestion();
+    // Reset feedback
+    resetFeedback();
+    // Enable option buttons
+    enableOptionButtons();
+    // Reset colour of buttons
+    resetColorButtons();
+}
 
 function updateQuestion() {
     question.innerHTML = assessmentQuiz[questionNumber].question;
@@ -223,18 +225,41 @@ function showResults() {
             resultText.innerHTML = `Well done ${activeUser.firstname}! Based on your answers, it looks like you need to study ${category}.`;
         }
     }
+    allAnswersCorrect();      
+    allAnswersIncorrect();
+    updateLink();
 
     function allAnswersCorrect() {
         if (activeUser.score == assessmentQuiz.length) {
             resultText.innerHTML = `Well done ${activeUser.firstname}! You answered all questions correctly!`;
         }
     };
-    allAnswersCorrect();  
 
     function allAnswersIncorrect() {
         if (activeUser.score == 0) {
-            resultText.innerHTML = `${activeUser.firstname}... You need to pull your act together.`;
+            resultText.innerHTML = `Better luck next time, ${activeUser.firstname}. Let's try again.`;
         }
-    }
-    allAnswersIncorrect();
+    };
+
+    function updateLink() {
+        if (category == 'Conditionals') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/02_program_structure.html' target='_blank'>Read about<br>Conditionals</a>";
+        } else if (category == 'Functions') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/03_functions.html' target='_blank'>Read about<br>Functions</a>";
+        } else if (category == 'Scope') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/03_functions.html' target='_blank'>Read about<br>Scope</a>";
+        } else if (category == 'Arrays') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/04_data.html' target='_blank'>Read about<br>Arrays</a>";
+        } else if (category == 'Loops') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/02_program_structure.html' target='_blank'>Read about<br>Loops</a>";
+        } else if (category == 'Iterators') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Iterators</a>";
+        } else if (category == 'Objects') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Objects</a>";
+        } else if (category == 'Classes') {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Classes</a>";
+        } else {
+            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/' target='_blank'>Read<br>more</a>";
+        }
+    };
 };
