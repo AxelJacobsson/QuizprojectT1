@@ -242,7 +242,7 @@ function showResults() {
         }
     };
 
-    function updateLink() {
+    function updateLink() { // We should probably change this to a switch statement (better for speed and readability)
         if (category == 'Conditionals') {
             readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/02_program_structure.html' target='_blank'>Read about<br>Conditionals</a>";
         } else if (category == 'Functions') {
