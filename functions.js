@@ -28,20 +28,28 @@ let progress = document.getElementById('progress');
 // results.html
 let resultText = document.getElementById('result-text');
 let readMoreButton = document.getElementById('read-more');
+let takeNewQuizButton = document.getElementById('take-new-quiz');
 
 
+//1. Shuffle questions using the Fisher-Yates Shuffle
 
-//1. Shuffle questions
-function shuffle(allQuestions) {
-    var currentIndex = allQuestions.length, temporaryValue, randomIndex;
+function shuffle(array) {
+    // why is this variable defined as three other variables?
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle
     while (0 !== currentIndex) {
+
+        // Pick a remaining element
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-        temporaryValue = allQuestions[currentIndex];
-        allQuestions[currentIndex] = allQuestions[randomIndex];
-        allQuestions[randomIndex] = temporaryValue;
+
+        // And swap it with the current element
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
     }
-    return allQuestions;
+    return array;
   };
 
 
@@ -62,7 +70,6 @@ function saveUser(user) {
 
 // Initiates the user welcome flow where it reads the username and saves it to local storage
 const welcomeFlow = function() {
-    //const users = getUsers() // What does this do??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
     //When clicking submit, a new user is created and stored to localStorage
     submitName.addEventListener('click', (e) => {  // there seems to be a problem here. 'e' is never called?
         const tempUserName = userNameInput.value
@@ -129,11 +136,13 @@ function giveFeedback() {
                     }
 
                     categoryFails[assessmentQuiz[questionNumber].category]++;
-
                     feedback.innerHTML = 'Incorrect!';
                     showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
                     element.style.backgroundColor = "rgb(178, 21, 24)";
                     element.style.color = "white";
+
+                    activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
+                    saveUser(activeUser) // Save activeUser to local storage  
                 };
                 resetButtonsNewQuestion(); // Resets all buttons for next question   
         };
@@ -233,6 +242,7 @@ function showResults() {
     allAnswersCorrect();      
     allAnswersIncorrect();
     updateLink();
+    overwriteLocalStorage();
 
     function allAnswersCorrect() {
         if (activeUser.score == assessmentQuiz.length) {
@@ -245,71 +255,46 @@ function showResults() {
             resultText.innerHTML = `Better luck next time, ${activeUser.firstname}. Let's try again.`;
         }
     };
-
-
-    /*
-    function updateLink() {
-        window.open(
-            readMoreButton.href,
-            '_blank'
-        );
-
-        readMoreButton.innerHTML = 'Read more'
-        readMoreButton.setAttribute('href', "https://eloquentjavascript.net/");
-
-        return false;
-    };*/
     
+    function updateLink() {
+        switch (category) {
+            case 'Conditionals':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/02_program_structure.html' target='_blank'>Read about<br>Conditionals</a>";
+                break;
+            case 'Functions':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/03_functions.html' target='_blank'>Read about<br>Functions</a>";
+                break;
+            case 'Scope':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/03_functions.html' target='_blank'>Read about<br>Scope</a>";
+                break;
+            case 'Arrays':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/04_data.html' target='_blank'>Read about<br>Arrays</a>";
+                break;
+            case 'Loops':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/02_program_structure.html' target='_blank'>Read about<br>Loops</a>";
+                break;
+            case 'Iterators':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Iterators</a>";
+                break;
+            case 'Objects':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Objects</a>";
+                break;
+            case 'Classes':
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Classes</a>";
+                break;
+            default:
+                readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/' target='_blank'>Read<br>more</a>";
+                break;
+        }
+    };
 
-
-    // VERSION 1
-    function updateLink() { // We should probably change this to a switch statement (better for speed and readability)
-        if (category == 'Conditionals') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/02_program_structure.html' target='_blank'>Read about<br>Conditionals</a>";
-            
-            //readMoreButton.innerHTML = 'Read about<br>Conditionals';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-
-        } else if (category == 'Functions') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/03_functions.html' target='_blank'>Read about<br>Functions</a>";
-
-            //readMoreButton.innerHTML = 'Read about<br>Functions';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-        } else if (category == 'Scope') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/03_functions.html' target='_blank'>Read about<br>Scope</a>";
-
-            //readMoreButton.innerHTML = 'Read about<br>Scope';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-        } else if (category == 'Arrays') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/04_data.html' target='_blank'>Read about<br>Arrays</a>";
-
-            //readMoreButton.innerHTML = 'Read about<br>Arrays';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-        } else if (category == 'Loops') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/02_program_structure.html' target='_blank'>Read about<br>Loops</a>";
-
-            //readMoreButton.innerHTML = 'Read about<br>Loops';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-        } else if (category == 'Iterators') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Iterators</a>";
-
-            //readMoreButton.innerHTML = 'Read about<br>Iterators';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-        } else if (category == 'Objects') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Objects</a>";
-
-            //readMoreButton.innerHTML = 'Read about<br>Objects';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-        } else if (category == 'Classes') {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/06_object.html' target='_blank'>Read about<br>Classes</a>";
-
-            //readMoreButton.innerHTML = 'Read about<br>Classes';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
-        } else {
-            readMoreButton.innerHTML = "<a href='https://eloquentjavascript.net/' target='_blank'>Read<br>more</a>";
-
-            //readMoreButton.innerHTML = 'Read<br>more';
-            //readMoreButton.setAttribute('href', 'https://eloquentjavascript.net/02_program_structure.html');
+    function overwriteLocalStorage() {
+        takeNewQuizButton.onclick = function() {
+            activeUser = JSON.parse(localStorage.getItem('activeUser'));
+            firstname = activeUser.firstname;
+            tryAgain = new User(firstname, 0, null)
+            localStorage.setItem('activeUser', JSON.stringify(tryAgain))
+            location.assign('./quiz.html');
         }
     };
 };
