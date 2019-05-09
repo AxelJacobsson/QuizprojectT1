@@ -3,8 +3,8 @@
 // Shuffle our array of questions
 shuffle(allQuestions);
 
-// Create new array "assessmentQuiz" with only 16 questions (right now its only 6 questions)
-const assessmentQuiz = allQuestions.slice(0, 5);
+// Create new array "assessmentQuiz" with 16 questions
+const assessmentQuiz = allQuestions.slice(0, 16);
 
 
 
@@ -24,18 +24,16 @@ let score = 0;
 
 let activeUser = getUsers(); // Import user from local storage
 
-// Run welcome flow if user is on index.html
 if (location.href.includes('index.html')) {
     welcomeFlow()
 }
 
-// Get name from local storage and display on instructions page and start quiz
 else if (location.href.includes('instructions.html')) {
     instructionsFlow()
 }
 
 else if (location.href.includes('quiz.html')) {
-    // Check if there is a user in local storage. If not, redirect to welcome screen (This does not seem to work???????????????????????????????????????????????
+    // Check if there is a user in local storage. If not, redirect to welcome screen
     if (getUsers() == null) {
         location.assign('index.html')
     } else {

@@ -8,3 +8,4 @@ class User {
       this.failedCategory = 0;
     }
 };
+

@@ -79,7 +79,7 @@ const welcomeFlow = function() {
         }
 
         // New user is created from User Class
-        const user = new User(tempUserName, 0, null)
+        const user = new User(tempUserName)
 
         // New user is saved to local storage
         localStorage.setItem('activeUser', JSON.stringify(user))
@@ -98,7 +98,7 @@ function instructionsFlow() {
 };
 
 function startQuiz() {
-    startQuizButton.addEventListener('click', (e) => {
+    startQuizButton.addEventListener('click', function() {
         // User is directed to quiz
         location.assign('quiz.html')
     })
@@ -111,7 +111,7 @@ function updateUI() {
     giveFeedback() // Provides feedback to the user
     pressNext() // Initialises new question
     updateQuestion(); // Shows the first question of the quiz (index 0)
-}
+};
 
 let categoryFails = {} //the object that stores the fails for the category
 function giveFeedback() {
@@ -125,17 +125,20 @@ function giveFeedback() {
                     element.style.backgroundColor = 'rgb(11, 85, 221)';
                     element.style.color = "white";
                     userScore.innerHTML = `Score: ${score}`;
-                    activeUser.score = score // Save score to activeUser
+
+                    // Save score to activeUser
+                    activeUser.score = score // save the score to the the user
                     activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
                     saveUser(activeUser) // Save activeUser to local storage  
                 } else {
-                    // User feedback
+                    
                     // Need to give it a value
                     if (!categoryFails[assessmentQuiz[questionNumber].category]) {
                         categoryFails[assessmentQuiz[questionNumber].category] = 0   
                     }
-
                     categoryFails[assessmentQuiz[questionNumber].category]++;
+
+                    // User feedback
                     feedback.innerHTML = 'Incorrect!';
                     showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
                     element.style.backgroundColor = "rgb(178, 21, 24)";
@@ -292,7 +295,7 @@ function showResults() {
         takeNewQuizButton.onclick = function() {
             activeUser = JSON.parse(localStorage.getItem('activeUser'));
             firstname = activeUser.firstname;
-            tryAgain = new User(firstname, 0, null)
+            tryAgain = new User(firstname)
             localStorage.setItem('activeUser', JSON.stringify(tryAgain))
             location.assign('./quiz.html');
         }
