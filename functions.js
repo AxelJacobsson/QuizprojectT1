@@ -98,7 +98,7 @@ function instructionsFlow() {
 };
 
 function startQuiz() {
-    startQuizButton.addEventListener('click', function() {
+    startQuizButton.addEventListener('click', function() { // Could have used the .onclick() method here
         // User is directed to quiz
         location.assign('quiz.html')
     })

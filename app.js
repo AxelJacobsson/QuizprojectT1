@@ -4,7 +4,7 @@
 shuffle(allQuestions);
 
 // Create new array "assessmentQuiz" with 16 questions
-const assessmentQuiz = allQuestions.slice(0, 16);
+const assessmentQuiz = allQuestions.slice(0, 5);
 
 
 
