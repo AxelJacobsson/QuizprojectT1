@@ -1,34 +1,34 @@
 // Import HTML elements and save to variable
 
 // index.html
-let userNameInput = document.getElementById('type-name');
-let submitName = document.getElementById('submit');
+const userNameInput = document.getElementById('type-name');
+const submitName = document.getElementById('submit');
 
 // instructions.html
-let userName = document.getElementById('user-name');
-let startQuizButton = document.getElementById('start-quiz');
+const userName = document.getElementById('user-name');
+const startQuizButton = document.getElementById('start-quiz');
 
 // quiz.html
-let question = document.getElementById('question');
-let checkAnswer = document.getElementsByClassName('option-buttons');
-let option1 = document.getElementById('option1');
-let option2 = document.getElementById('option2');
-let option3 = document.getElementById('option3');
-let feedback = document.getElementById('feedback');
-let showCorrectAnswer = document.getElementById('showCorrectAnswer');
-let nextQuestionButton = document.getElementById('nextQuestion');
-let viewResultButton = document.getElementById('endQuiz');
-let currentQuestion = document.getElementById('currentQuestion');
-let highScore = document.getElementById('highScore');
-let totalQuestions = document.getElementById('totalQuestions');
-let userScore = document.getElementById('score');
-let quizLength = document.getElementById('quiz-length');
-let progress = document.getElementById('progress');
+const question = document.getElementById('question');
+const checkAnswer = document.getElementsByClassName('option-buttons');
+const option1 = document.getElementById('option1');
+const option2 = document.getElementById('option2');
+const option3 = document.getElementById('option3');
+const feedback = document.getElementById('feedback');
+const showCorrectAnswer = document.getElementById('showCorrectAnswer');
+const nextQuestionButton = document.getElementById('nextQuestion');
+const viewResultButton = document.getElementById('endQuiz');
+const currentQuestion = document.getElementById('currentQuestion');
+const highScore = document.getElementById('highScore');
+const totalQuestions = document.getElementById('totalQuestions');
+const userScore = document.getElementById('score');
+const quizLength = document.getElementById('quiz-length');
+const progress = document.getElementById('progress');
 
 // results.html
-let resultText = document.getElementById('result-text');
-let readMoreButton = document.getElementById('read-more');
-let takeNewQuizButton = document.getElementById('take-new-quiz');
+const resultText = document.getElementById('result-text');
+const readMoreButton = document.getElementById('read-more');
+const takeNewQuizButton = document.getElementById('take-new-quiz');
 
 
 //1. Shuffle questions using the Fisher-Yates Shuffle
