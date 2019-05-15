@@ -10,6 +10,8 @@ class Question {
   }
 };
 
+//const categories = ["Conditionals", "Functions", "Scope"]
+
 // Array with all questions
 
 const allQuestions = [

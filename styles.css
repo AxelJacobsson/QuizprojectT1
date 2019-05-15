@@ -143,6 +143,10 @@ a:active {
   color: white;
 }
 
+.button-2:hover > a {
+  color: white;
+}
+
 #nextQuestion {
   display: block;
 }

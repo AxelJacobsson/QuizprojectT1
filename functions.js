@@ -14,6 +14,9 @@ const checkAnswer = document.getElementsByClassName('option-buttons');
 const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
+
+//const options = [option1, option2, option3, option4]
+
 const feedback = document.getElementById('feedback');
 const showCorrectAnswer = document.getElementById('showCorrectAnswer');
 const nextQuestionButton = document.getElementById('nextQuestion');
@@ -107,47 +110,57 @@ function startQuiz() {
 
 // 5. QUIZ GAME FLOW
 
+let categoryFails = {} // The object that stores the fails for the category
+
 function updateUI() {
     giveFeedback() // Provides feedback to the user
     pressNext() // Initialises new question
     updateQuestion(); // Shows the first question of the quiz (index 0)
 };
 
-let categoryFails = {} //the object that stores the fails for the category
 function giveFeedback() {
     for (const element of checkAnswer){
         element.onclick = function (event) {
-                let response = event.target.innerHTML;
-                if(response == assessmentQuiz[questionNumber].answer){ //When options are selected, loop checks if correct answer
-                    score++; //Increment score by 1
-                    // User feedback
-                    feedback.innerHTML = "Correct!";
-                    element.style.backgroundColor = 'rgb(11, 85, 221)';
-                    element.style.color = "white";
-                    userScore.innerHTML = `Score: ${score}`;
 
-                    // Save score to activeUser
-                    activeUser.score = score // save the score to the the user
-                    activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
-                    saveUser(activeUser) // Save activeUser to local storage  
-                } else {
+            let response = event.target.innerHTML;
+
+            if(response == assessmentQuiz[questionNumber].answer){ //When options are selected, loop checks if correct answer
+                
+                score++; //Increment score by 1
+                
+                // User feedback
+                feedback.innerHTML = "Correct!";
+                element.style.backgroundColor = 'rgb(11, 85, 221)';
+                element.style.color = "white";
+                userScore.innerHTML = `Score: ${score}`;
+
+                // Save score to activeUser
+                activeUser.score = score // save the score to the the user
+                activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
+                saveUser(activeUser) // Save activeUser to local storage  
+            
+            } else {
                     
-                    // Need to give it a value
-                    if (!categoryFails[assessmentQuiz[questionNumber].category]) {
-                        categoryFails[assessmentQuiz[questionNumber].category] = 0   
-                    }
-                    categoryFails[assessmentQuiz[questionNumber].category]++;
+                // Need to give it a value
+                if (!categoryFails[assessmentQuiz[questionNumber].category]) {
+                    categoryFails[assessmentQuiz[questionNumber].category] = 0   
+                }
 
-                    // User feedback
-                    feedback.innerHTML = 'Incorrect!';
-                    showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
-                    element.style.backgroundColor = "rgb(178, 21, 24)";
-                    element.style.color = "white";
+                // Increment categoryFails by 1
+                categoryFails[assessmentQuiz[questionNumber].category]++;
 
-                    activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
-                    saveUser(activeUser) // Save activeUser to local storage  
-                };
-                resetButtonsNewQuestion(); // Resets all buttons for next question   
+                // User feedback
+                feedback.innerHTML = 'Incorrect!';
+                showCorrectAnswer.innerHTML = `The correct answer is '${assessmentQuiz[questionNumber].answer}'`
+                element.style.backgroundColor = "rgb(178, 21, 24)";
+                element.style.color = "white";
+
+                activeUser.failedCategory = categoryFails //Store "categoryFails" to activeUser (local storage), since a the "results.html" loads as a new html
+                saveUser(activeUser) // Save activeUser to local storage  
+            };
+
+            resetButtonsNewQuestion(); // Resets all buttons for next question   
+        
         };
     }
 };
@@ -197,6 +210,12 @@ function enableOptionButtons() { // Option buttons are enabled
     option3.disabled = false;
 };
 
+function setOptionButtons(enabled) {
+    options.forEach(function(option) {
+        option.disabled = enabled
+    })
+}
+
 function resetColorButtons() { // Colour of buttons is reset
     option1.style.backgroundColor = "";
     option2.style.backgroundColor = "";
@@ -235,6 +254,8 @@ function showResults() {
     
     let category;
     let maxFails = 0;
+
+
     for (let checkCategory of Object.keys(activeUser.failedCategory)) { // Get the keys from the object
          if (activeUser.failedCategory[checkCategory] > maxFails) {
             category = checkCategory; // The category with the highest number of fails is stored to "category"
@@ -242,6 +263,7 @@ function showResults() {
             resultText.innerHTML = `Well done ${activeUser.firstname}! Based on your answers, it looks like you need to study ${category}.`;
         }
     }
+    
     allAnswersCorrect();      
     allAnswersIncorrect();
     updateLink();
